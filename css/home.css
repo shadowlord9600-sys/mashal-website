@@ -260,98 +260,100 @@
 }
 
 /* ==========================================================================
-   The programme at a glance — the pitch deck's dark panel, as a band.
+   The programme at a glance — a plain strip of four facts. No cards, no
+   panel: the icons and a hairline between items do all the work.
    ========================================================================== */
-.glance {
+.facts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
-  padding: var(--space-xl) var(--space-2xl);
-  margin-bottom: var(--space-2xl);
-  background:
-    radial-gradient(24rem 12rem at 88% 0%, rgba(96, 165, 250, 0.18), transparent 62%),
-    linear-gradient(135deg, var(--bg-dark-2), #251C63);
-  border: 1px solid rgba(207, 201, 240, 0.16);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-3xl);
 }
-.glance__item {
-  display: grid;
-  gap: var(--space-2xs);
-  align-content: start;
+.fact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
-.glance__item:not(:first-child) {
+.fact:not(:first-child) {
   padding-left: var(--space-lg);
-  border-left: 1px solid rgba(207, 201, 240, 0.14);
+  border-left: 1px solid rgba(26, 22, 80, 0.12);
 }
-.glance__big {
+.fact__icon { width: 2.4rem; height: 2.4rem; flex: none; }
+.fact__body { display: grid; line-height: 1.35; min-width: 0; }
+.fact__body strong {
   font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-semibold);
+  font-size: var(--step-1);
   letter-spacing: var(--tracking-tight);
-  line-height: var(--lh-tight);
-  color: #FFFFFF;                       /* 16.5:1 on the panel's darkest end */
+  color: var(--text-ink);
 }
-.glance__sub { font-size: var(--step--1); color: var(--text-on-dark-soft); }
+.fact__body span { font-size: var(--step--1); color: var(--text-muted); }
 
 @media (max-width: 61.99em) {
-  .glance { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-xl); padding: var(--space-xl); }
-  .glance__item:nth-child(3) { padding-left: 0; border-left: 0; }
+  .facts { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-xl); }
+  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
 }
 @media (max-width: 35.99em) {
-  .glance { grid-template-columns: 1fr; }
-  .glance__item:not(:first-child) { padding-left: 0; border-left: 0; padding-top: var(--space-md); border-top: 1px solid rgba(207, 201, 240, 0.14); }
+  .facts { grid-template-columns: 1fr; }
+  .fact:not(:first-child) { padding-left: 0; border-left: 0; }
 }
 
 /* ==========================================================================
-   The syllabus — eight sessions in teaching order (a genuine sequence,
-   hence the numbers). Compact tiles, four across like the deck.
+   The syllabus — eight sessions on two lit rails, side by side. The site's
+   station language (gradient line + circle markers), no tiles anywhere.
+   Numbers, not icons, in the markers: this is a genuine sequence.
    ========================================================================== */
 .syllabus {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-lg);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl) clamp(2rem, 1rem + 4vw, 5rem);
 }
-.syl {
+.srail {
+  position: relative;
+  display: grid;
+  row-gap: var(--space-xl);
+}
+.srail::before {
+  content: "";
+  position: absolute;
+  left: calc(1.625rem - 1px);
+  top: 1.25rem;
+  bottom: 1.25rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--brand-blue), var(--brand-purple));
+  opacity: 0.8;
+}
+.srail__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  column-gap: var(--space-md);
+  align-items: center;
+}
+.srail__marker {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
   background: var(--surface);
-  border: 1px solid rgba(26, 22, 80, 0.09);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--dur-base) var(--ease-out),
-              box-shadow var(--dur-base) var(--ease-out),
-              border-color var(--dur-base) var(--ease-out);
-}
-.syl:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(91, 63, 224, 0.28);
-}
-.syl__num {
-  display: block;
+  border: 1px solid rgba(91, 63, 224, 0.22);
+  box-shadow: 0 4px 14px rgba(26, 22, 80, 0.12), 0 0 0 5px rgba(245, 244, 255, 0.9);
+  z-index: 1;
   font-family: var(--font-display);
-  font-size: var(--step-3);
   font-weight: var(--fw-bold);
-  line-height: 1;
+  font-size: var(--step-0);
   letter-spacing: var(--tracking-tight);
-  margin-bottom: var(--space-sm);
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  background-color: var(--surface);
+  color: var(--brand-purple);
 }
-@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-  .syl__num { background: none; color: var(--brand-purple); -webkit-text-fill-color: currentColor; }
-}
-.syl h3 { font-size: var(--step-0); margin-bottom: var(--space-2xs); }
-.syl p { font-size: var(--step--1); color: var(--text-muted); }
+.srail__text { min-width: 0; }
+.srail__text h3 { font-size: var(--step-1); margin-bottom: 0.15rem; }
+.srail__text p { font-size: var(--step--1); color: var(--text-muted); }
 
-@media (max-width: 61.99em) { .syllabus { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 35.99em) { .syllabus { grid-template-columns: 1fr; } }
-
-@media (prefers-reduced-motion: reduce) {
-  .syl:hover { transform: none; }
+@media (max-width: 47.99em) {
+  .syllabus { grid-template-columns: 1fr; gap: var(--space-xl); }
 }
 
 /* ==========================================================================

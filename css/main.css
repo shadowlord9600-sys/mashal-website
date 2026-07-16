@@ -202,6 +202,7 @@ a { color: inherit; }
    Cards — the workhorse. Detail lives in cards, not paragraphs.
    ========================================================================== */
 .grid { display: grid; gap: var(--space-lg); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
 .grid--3 { grid-template-columns: repeat(3, 1fr); }
 .grid--2 { grid-template-columns: repeat(2, 1fr); }
 
@@ -210,10 +211,10 @@ a { color: inherit; }
    home.css instead) kept three columns at 375px and pushed the page to 480px
    wide. Any page using .grid gets the responsive behaviour by definition. */
 @media (max-width: 61.99em) {
-  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .grid--4, .grid--3 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 47.99em) {
-  .grid--3, .grid--2 { grid-template-columns: 1fr; }
+  .grid--4, .grid--3, .grid--2 { grid-template-columns: 1fr; }
 }
 
 .card {
