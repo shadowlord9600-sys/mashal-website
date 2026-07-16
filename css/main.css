@@ -531,6 +531,179 @@ a { color: inherit; }
 }
 
 /* ==========================================================================
+   The lit path — stations on one gradient line that draws itself in.
+   Shared component: home's programme tracks and why-us's student benefits.
+   Desktop: horizontal line through the middle row of a 3-column grid; text
+   alternates above (s1, s3) and below (s2). Mobile: the line turns vertical
+   down the left edge and stations hang off it.
+   ========================================================================== */
+.path {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 7.5rem auto;
+  /* No column gap: the SVG spans the full row, so station markers only land
+     exactly on the curve's 1/6, 3/6, 5/6 crossings when each column is exactly
+     one third of the width. Text spacing comes from the blocks' own padding. */
+  column-gap: 0;
+  margin-top: var(--space-2xl);
+}
+.path__line {
+  grid-area: 2 / 1 / 3 / 4;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.path__track { fill: none; stroke: rgba(26, 22, 80, 0.10); stroke-width: 2; }
+.path__stroke {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 1px 5px rgba(91, 63, 224, 0.35));
+}
+.path__marker {
+  display: grid;
+  place-items: center;
+  align-self: center;
+  justify-self: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid rgba(91, 63, 224, 0.22);
+  box-shadow: 0 6px 18px rgba(26, 22, 80, 0.14), 0 0 0 6px rgba(245, 244, 255, 0.9);
+  z-index: 1;
+}
+.path__marker img { width: 55%; height: 55%; }
+.path__marker--s1 { grid-area: 2 / 1; }
+.path__marker--s2 { grid-area: 2 / 2; }
+.path__marker--s3 { grid-area: 2 / 3; }
+
+.path__text {
+  text-align: center;
+  max-width: 30ch;
+  justify-self: center;
+  padding-inline: var(--space-md);
+}
+.path__text h3 { font-size: var(--step-1); margin-bottom: var(--space-xs); }
+.path__text p { color: var(--text-body); font-size: var(--step--1); line-height: 1.6; }
+.path__text--s1 { grid-area: 1 / 1; align-self: end; padding-bottom: var(--space-xs); }
+.path__text--s2 { grid-area: 3 / 2; align-self: start; padding-top: var(--space-xs); }
+.path__text--s3 { grid-area: 1 / 3; align-self: end; padding-bottom: var(--space-xs); }
+
+/* Draw-in choreography (only when JS will add .is-visible). */
+.js .path .path__stroke { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js .path.is-visible .path__stroke {
+  animation: path-draw 1.8s var(--ease-in-out) 0.2s forwards;
+}
+@keyframes path-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+.js .path .path__marker { opacity: 0; transform: scale(0.4); }
+.js .path.is-visible .path__marker { animation: station-pop 0.55s var(--ease-out) forwards; }
+.js .path.is-visible .path__marker--s1 { animation-delay: 0.45s; }
+.js .path.is-visible .path__marker--s2 { animation-delay: 0.95s; }
+.js .path.is-visible .path__marker--s3 { animation-delay: 1.45s; }
+@keyframes station-pop {
+  from { opacity: 0; transform: scale(0.4); }
+  60%  { transform: scale(1.08); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.js .path .path__text { opacity: 0; transform: translateY(0.6rem); }
+.js .path.is-visible .path__text { animation: text-in 0.6s var(--ease-out) forwards; }
+.js .path.is-visible .path__text--s1 { animation-delay: 0.6s; }
+.js .path.is-visible .path__text--s2 { animation-delay: 1.1s; }
+.js .path.is-visible .path__text--s3 { animation-delay: 1.6s; }
+@keyframes text-in {
+  from { opacity: 0; transform: translateY(0.6rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 47.99em) {
+  .path {
+    position: relative;
+    grid-template-columns: 3.5rem 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    column-gap: var(--space-md);
+    row-gap: var(--space-xl);
+  }
+  .path__line { display: none; }
+  .path::before {
+    content: "";
+    position: absolute;
+    left: calc(1.75rem - 1px);
+    top: 1.25rem;
+    bottom: 1.25rem;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--brand-blue), var(--brand-purple));
+  }
+  .path__marker { width: 3.5rem; height: 3.5rem; align-self: start; }
+  .path__marker--s1 { grid-area: 1 / 1; }
+  .path__text--s1   { grid-area: 1 / 2; }
+  .path__marker--s2 { grid-area: 2 / 1; }
+  .path__text--s2   { grid-area: 2 / 2; }
+  .path__marker--s3 { grid-area: 3 / 1; }
+  .path__text--s3   { grid-area: 3 / 2; }
+  .path__text {
+    text-align: left;
+    justify-self: start;
+    align-self: center;
+    max-width: none;
+    padding: 0;
+  }
+}
+
+/* ==========================================================================
+   The lit rail — the path's vertical sibling, at every viewport width.
+   A gradient line runs down the left; stations hang off it. Used where a
+   top-to-bottom read suits the content (why-us's "what it asks of you").
+   ========================================================================== */
+.rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.25rem 1fr;
+  column-gap: var(--space-lg);
+  row-gap: var(--space-2xl);
+  max-width: 44rem;
+  margin-inline: auto;
+  margin-top: var(--space-2xl);
+}
+.rail::before {
+  content: "";
+  position: absolute;
+  left: calc(2.125rem - 1px);
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--brand-blue), var(--brand-purple));
+  opacity: 0.85;
+}
+.rail__marker {
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid rgba(91, 63, 224, 0.22);
+  box-shadow: 0 6px 18px rgba(26, 22, 80, 0.14), 0 0 0 6px rgba(245, 244, 255, 0.9);
+  z-index: 1;
+  align-self: start;
+}
+.rail__marker img { width: 55%; height: 55%; }
+.rail__text { align-self: center; min-width: 0; }
+.rail__text h3 { font-size: var(--step-1); margin-bottom: var(--space-xs); }
+.rail__text p { color: var(--text-body); font-size: var(--step--1); line-height: 1.6; max-width: 52ch; }
+
+@media (max-width: 35.99em) {
+  .rail { grid-template-columns: 3.5rem 1fr; column-gap: var(--space-md); }
+  .rail::before { left: calc(1.75rem - 1px); }
+  .rail__marker { width: 3.5rem; height: 3.5rem; }
+}
+
+/* ==========================================================================
    Constellation — faint node-and-line network on the dark heroes.
    Decorative only (aria-hidden): reads as "AI", and as the brand's own story
    of points of light in the dark. Kept at whisper opacity so text contrast

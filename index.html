@@ -109,35 +109,56 @@
         </div>
         <ul class="hero__trust hero-seq" data-seq="5">
           <li>Free for schools</li>
-          <li>Fits one period</li>
+          <li>30-minute sessions</li>
           <li>Hands-on</li>
         </ul>
       </div>
 
-      <!-- The builder: a student's prompt types itself out and a mini website
-           assembles block by block above it, on a loop — the pitch, shown
-           rather than decorated. Purely decorative for AT; the copy carries
-           the message. Static end-state without JS or with reduced motion. -->
+      <!-- The deck: three cards — the things students walk out having built —
+           take turns at the front of a slowly shuffling hand. Decorative for
+           AT (the copy carries the message); a static fanned deck without JS
+           or under reduced motion. -->
       <div class="hero__visual" id="hero-visual" aria-hidden="true">
-        <div class="builder">
-          <div class="builder__site">
-            <div class="builder__bar">
-              <span class="builder__dot"></span><span class="builder__dot"></span><span class="builder__dot"></span>
-              <span class="builder__url">bakesale.myschool.pk</span>
+        <div class="deck">
+          <div class="deck-card deck-card--a">
+            <div class="deck-card__head">
+              <span class="deck-card__chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><circle cx="6.2" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><circle cx="8.8" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+              </span>
+              <span class="deck-card__title">A working website</span>
             </div>
-            <div class="builder__canvas">
-              <span class="b-el b-el--logo"></span>
-              <span class="b-el b-el--nav"></span>
-              <span class="b-el b-el--head"></span>
-              <span class="b-el b-el--line"></span>
-              <span class="b-el b-el--line b-el--short"></span>
-              <span class="b-el b-el--btn"></span>
+            <div class="deck-card__viz">
+              <span class="dz dz--head"></span>
+              <span class="dz dz--line"></span>
+              <span class="dz dz--line dz--short"></span>
+              <span class="dz dz--btn"></span>
             </div>
           </div>
-          <div class="builder__prompt">
-            <span class="builder__label">student · one lab period</span>
-            <p class="builder__cmdline"><span class="builder__cmd">build a site for our bake sale</span><span class="builder__caret"></span></p>
-            <p class="builder__done">✓ built, by a 9th grader</p>
+
+          <div class="deck-card deck-card--b">
+            <div class="deck-card__head">
+              <span class="deck-card__chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 5.5 13.5H11L9.5 22 18 10.5h-5.5z"/></svg>
+              </span>
+              <span class="deck-card__title">An automation</span>
+            </div>
+            <div class="deck-card__viz deck-card__viz--flow">
+              <i class="dz-node"></i><i class="dz-link"></i><i class="dz-node"></i><i class="dz-link"></i><i class="dz-node dz-node--lit"></i>
+            </div>
+          </div>
+
+          <div class="deck-card deck-card--c">
+            <div class="deck-card__head">
+              <span class="deck-card__chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 10h18M3 15h18M9.5 10v10"/></svg>
+              </span>
+              <span class="deck-card__title">A mini-CRM</span>
+            </div>
+            <div class="deck-card__viz">
+              <span class="dz dz--row"></span>
+              <span class="dz dz--row"></span>
+              <span class="dz dz--row dz--short"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -149,9 +170,9 @@
   <section class="section section--tint on-light" id="what-we-do">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Planned programmes</p>
-        <h2>Three sessions, built for a normal lab slot.</h2>
-        <p>Self-contained. Run one, or all three as a short series.</p>
+        <p class="eyebrow">Planned programme</p>
+        <h2>Eight sessions. Thirty minutes each.</h2>
+        <p>One full programme per school — eight half-hour sessions across the term, moving through three tracks.</p>
       </div>
 
       <!-- The lit path: three stations along one gradient line that draws
