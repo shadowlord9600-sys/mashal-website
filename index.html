@@ -40,6 +40,8 @@
     <nav class="nav__menu" id="nav-menu" aria-label="Main">
       <a class="nav__link" href="index.html" aria-current="page">Home</a>
       <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="why-us.html">Why us</a>
+      <a class="nav__link" href="gallery.html">Gallery</a>
       <a class="nav__link" href="contact.html">Contact</a>
     </nav>
   </div>
@@ -112,29 +114,32 @@
         </ul>
       </div>
 
-      <!-- Ring + logo + floating pills. The ring draws itself in on load; the
-           mark and pills then float gently so the page is never fully static. -->
-      <div class="hero__mark" id="hero-mark">
-        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-          <defs>
-            <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#60A5FA"/>
-              <stop offset="100%" stop-color="#A78BFA"/>
-            </linearGradient>
-          </defs>
-          <circle class="ring__track" cx="100" cy="100" r="95"/>
-          <circle class="ring__stroke" cx="100" cy="100" r="95" pathLength="1" stroke="url(#ring-gradient)"/>
-        </svg>
-
-        <span class="logo-disc hero__disc">
-          <img src="assets/images/logo-transparent.png"
-               alt="Mashal — the word مشعل in Urdu calligraphy inside a circular ring"
-               width="546" height="546" fetchpriority="high">
-        </span>
-
-        <span class="pill pill--1" aria-hidden="true">Build a real site</span>
-        <span class="pill pill--2" aria-hidden="true">Automate a task</span>
-        <span class="pill pill--3" aria-hidden="true">Find a career path</span>
+      <!-- The builder: a student's prompt types itself out and a mini website
+           assembles block by block above it, on a loop — the pitch, shown
+           rather than decorated. Purely decorative for AT; the copy carries
+           the message. Static end-state without JS or with reduced motion. -->
+      <div class="hero__visual" id="hero-visual" aria-hidden="true">
+        <div class="builder">
+          <div class="builder__site">
+            <div class="builder__bar">
+              <span class="builder__dot"></span><span class="builder__dot"></span><span class="builder__dot"></span>
+              <span class="builder__url">bakesale.myschool.pk</span>
+            </div>
+            <div class="builder__canvas">
+              <span class="b-el b-el--logo"></span>
+              <span class="b-el b-el--nav"></span>
+              <span class="b-el b-el--head"></span>
+              <span class="b-el b-el--line"></span>
+              <span class="b-el b-el--line b-el--short"></span>
+              <span class="b-el b-el--btn"></span>
+            </div>
+          </div>
+          <div class="builder__prompt">
+            <span class="builder__label">student · one lab period</span>
+            <p class="builder__cmdline"><span class="builder__cmd">build a site for our bake sale</span><span class="builder__caret"></span></p>
+            <p class="builder__done">✓ built, by a 9th grader</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -253,6 +258,8 @@
         <ul class="footer__list">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="why-us.html">Why us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>

@@ -1,6 +1,6 @@
 /* Hero load sequence — the site's one orchestrated moment.
-       ring stroke-draws -> disc settles -> copy sequences in -> pills pop
-       -> everything hands over to a slow ambient float.
+       builder visual settles in -> copy sequences in -> the builder's
+       type-and-assemble loop takes over, floating gently.
    Timings live in home.css so the sequence reads in one place; this file only
    decides WHETHER to run it and WHEN to start.
 
@@ -17,25 +17,18 @@
 
   /* Final state, no animation.
      Note this must clear EVERY element the stylesheet starts hidden — both
-     .hero-seq and .pill are at opacity 0 under .js, so missing either one
-     leaves it permanently invisible for reduced-motion users. */
+     .hero-seq and .hero__visual are at opacity 0 under .js, so missing either
+     one leaves it permanently invisible for reduced-motion users. */
   function settle() {
     hero.classList.remove('is-ready');
     hero.classList.add('is-settled');
 
-    var hidden = hero.querySelectorAll('.hero-seq, .pill');
+    var hidden = hero.querySelectorAll('.hero-seq, .hero__visual');
     for (var i = 0; i < hidden.length; i++) {
       hidden[i].style.opacity = '1';
       hidden[i].style.transform = 'none';
       hidden[i].style.animation = 'none';
     }
-    var stroke = hero.querySelector('.ring__stroke');
-    if (stroke) {
-      stroke.style.animation = 'none';
-      stroke.style.strokeDashoffset = '0'; // ring complete, just not drawn
-    }
-    var disc = hero.querySelector('.hero__disc');
-    if (disc) disc.style.animation = 'none';
   }
 
   function play() {
@@ -48,16 +41,8 @@
     if (started) return;
     if (reduced.matches) { settle(); return; }
 
-    // Wait for the logo bitmap so the disc doesn't pop mid-sequence, but never
-    // let a slow or broken image hold the hero hostage.
-    var img = hero.querySelector('.hero__disc img');
-    if (img && !img.complete) {
-      img.addEventListener('load', play, { once: true });
-      img.addEventListener('error', play, { once: true });
-      window.setTimeout(play, 900);
-    } else {
-      play();
-    }
+    // The builder visual is pure CSS — nothing to wait for.
+    play();
   }
 
   /* Start only once the page is actually on screen. A tab opened in the

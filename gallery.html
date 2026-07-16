@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bring Mashal to your school — Contact</title>
-<meta name="description" content="Book a Mashal session for your school. You provide a lab slot and students; we bring the curriculum, the instructor and the materials — free.">
+<title>Gallery — Mashal</title>
+<meta name="description" content="Photos from Mashal's workshops in Pakistani school labs — this page fills up as our first sessions run.">
 <meta name="theme-color" content="#0D0B21">
-<meta property="og:title" content="Bring Mashal to your school — Contact">
-<meta property="og:description" content="You provide a lab slot and students. We bring the rest — free.">
+<meta property="og:title" content="Gallery — Mashal">
+<meta property="og:description" content="Photos from Mashal's workshops — filling up as our first sessions run.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/images/logo.png">
 <link rel="icon" href="assets/images/logo-transparent.png" type="image/png">
@@ -20,7 +20,7 @@
 
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/contact.css">
+<link rel="stylesheet" href="css/gallery.css">
 </head>
 <body>
 
@@ -41,8 +41,8 @@
       <a class="nav__link" href="index.html">Home</a>
       <a class="nav__link" href="about.html">About</a>
       <a class="nav__link" href="why-us.html">Why us</a>
-      <a class="nav__link" href="gallery.html">Gallery</a>
-      <a class="nav__link" href="contact.html" aria-current="page">Contact</a>
+      <a class="nav__link" href="gallery.html" aria-current="page">Gallery</a>
+      <a class="nav__link" href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
@@ -82,97 +82,96 @@
       </g>
     </svg>
     <div class="container">
-      <p class="eyebrow reveal">Contact</p>
-      <h1 class="reveal d1">Bring Mashal to your school.</h1>
+      <p class="eyebrow reveal">Gallery</p>
+      <h1 class="reveal d1">Proof, not promises.</h1>
       <p class="reveal d2">
-        You provide a lab slot and a group of students. We bring everything else —
-        and it costs the school nothing.
+        This page fills up as our first workshops run. We'd rather show you empty
+        frames than stock photos of classrooms we've never been in.
       </p>
     </div>
   </section>
 
-  <!-- ===================== FORM ===================== -->
-  <section class="section section--white on-light" id="form">
-    <div class="container contact">
+  <!-- ===================== GALLERY GRID ===================== -->
+  <section class="section section--white on-light" id="photos">
+    <div class="container">
 
-      <div class="contact__aside reveal">
-        <h2>Let's Connect</h2>
-        <p class="contact__intro">
-          We're open to collaboration, questions, partnerships, and any ideas that can
-          help us expand our mission.
-        </p>
-
-        <a class="contact__direct" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.mashal.ai@gmail.com" target="_blank" rel="noopener">
-          <span class="contact__direct-icon"><img src="assets/icons/mail.svg" alt="" width="48" height="48"></span>
-          <span class="contact__direct-body">
-            <span class="contact__direct-label">Email</span>
-            <span class="contact__direct-value">contact.mashal.ai@gmail.com</span>
+      <!-- HOW TO ADD REAL PHOTOS LATER
+           1. Drop the image into assets/images/gallery/ (create the folder).
+           2. Replace a placeholder <li> below with:
+                <li class="g-tile g-tile--photo reveal">
+                  <figure>
+                    <img src="assets/images/gallery/session-01.jpg"
+                         alt="Students building their first website at [school name]"
+                         loading="lazy">
+                    <figcaption>AI Beyond Chat — [school], [month year]</figcaption>
+                  </figure>
+                </li>
+           3. Write alt text that says what's happening — it's read aloud to
+              blind visitors and shown if the image fails. -->
+      <ul class="g-grid">
+        <li class="g-tile reveal">
+          <span class="g-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="12" width="36" height="28" rx="4"/>
+              <path d="M17 12l3.5-5h7L31 12"/><circle cx="24" cy="26" r="7"/>
+            </svg>
           </span>
-        </a>
-
-        <!-- Instagram. -->
-        <a class="contact__direct" href="https://www.instagram.com/mashal_ai/" target="_blank" rel="noopener">
-          <span class="contact__direct-icon"><img src="assets/icons/instagram.svg" alt="" width="48" height="48"></span>
-          <span class="contact__direct-body">
-            <span class="contact__direct-label">Instagram</span>
-            <span class="contact__direct-value">@mashal_ai</span>
+          <h2 class="g-tile__title">The first session</h2>
+          <p class="g-tile__note">Reserved for the day it happens.</p>
+        </li>
+        <li class="g-tile reveal d1">
+          <span class="g-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="10" width="36" height="24" rx="3"/><path d="M4 40h40"/><path d="M18 27l-4-5 4-5M30 17l4 5-4 5"/>
+            </svg>
           </span>
-        </a>
-      </div>
+          <h2 class="g-tile__title">Students building</h2>
+          <p class="g-tile__note">First websites going live in the lab.</p>
+        </li>
+        <li class="g-tile reveal d2">
+          <span class="g-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="17" cy="18" r="5"/><circle cx="33" cy="18" r="5"/>
+              <path d="M7 38c0-6 4.5-10 10-10s10 4 10 10M27 32c1.8-2.5 4.5-4 7-4 5.5 0 9 4 9 10" transform="translate(0 -2)"/>
+            </svg>
+          </span>
+          <h2 class="g-tile__title">Show &amp; tell</h2>
+          <p class="g-tile__note">Students presenting what they made.</p>
+        </li>
+        <li class="g-tile reveal">
+          <span class="g-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="12" width="36" height="28" rx="4"/>
+              <path d="M6 32l10-9 8 7 6-5 12 9"/><circle cx="32" cy="21" r="2.5"/>
+            </svg>
+          </span>
+          <h2 class="g-tile__title">The lab at work</h2>
+          <p class="g-tile__note">Full room, every screen busy.</p>
+        </li>
+        <li class="g-tile reveal d1">
+          <span class="g-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="16" r="6"/><path d="M10 40c0-8 6-12 14-12s14 4 14 12"/>
+            </svg>
+          </span>
+          <h2 class="g-tile__title">The volunteers</h2>
+          <p class="g-tile__note">The people who make sessions happen.</p>
+        </li>
+        <li class="g-tile reveal d2">
+          <span class="g-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24 6l4.6 9.3L39 16.8l-7.5 7.3 1.8 10.3L24 29.5l-9.3 4.9 1.8-10.3L9 16.8l10.4-1.5z"/>
+            </svg>
+          </span>
+          <h2 class="g-tile__title">The moments</h2>
+          <p class="g-tile__note">The ones we can't plan for.</p>
+        </li>
+      </ul>
 
-      <!-- Delivered via FormSubmit (formsubmit.co): submissions arrive in the
-           Mashal inbox directly — the visitor never leaves the page. form.js
-           submits over AJAX for the inline confirmation; without JS the form
-           still works as a plain POST to the same service.
-           NOTE: delivery starts after the one-time "Activate" email FormSubmit
-           sends to the address on first submission. -->
-      <form class="form reveal d1" id="contact-form"
-            action="https://formsubmit.co/contact.mashal.ai@gmail.com"
-            method="post">
-        <!-- FormSubmit config: email subject/format, no captcha interstitial
-             for the no-JS path, and a honeypot field bots fill but people
-             never see (submissions with it filled are dropped). -->
-        <input type="hidden" name="_subject" value="New message from the Mashal website">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" tabindex="-1" autocomplete="off"
-               style="display:none" aria-hidden="true">
-
-        <div class="form__row">
-          <label class="form__label" for="f-name">Your name</label>
-          <input class="form__input" type="text" id="f-name" name="name" autocomplete="name" required>
-        </div>
-
-        <div class="form__row">
-          <label class="form__label" for="f-email">Email</label>
-          <input class="form__input" type="email" id="f-email" name="email" autocomplete="email" required>
-        </div>
-
-        <div class="form__row">
-          <label class="form__label" for="f-role">I'm writing as</label>
-          <select class="form__input form__select" id="f-role" name="role">
-            <option value="School">A school</option>
-            <option value="Teacher">A teacher</option>
-            <option value="Volunteer">A volunteer</option>
-            <option value="Parent or student">A parent or student</option>
-            <option value="Other">Something else</option>
-          </select>
-        </div>
-
-        <div class="form__row">
-          <label class="form__label" for="f-org">School or organisation <span class="form__optional">(optional)</span></label>
-          <input class="form__input" type="text" id="f-org" name="organisation" autocomplete="organization">
-        </div>
-
-        <div class="form__row">
-          <label class="form__label" for="f-msg">Message</label>
-          <textarea class="form__input form__textarea" id="f-msg" name="message" rows="5" required></textarea>
-        </div>
-
-        <button class="btn btn--primary form__submit" type="submit">Send message</button>
-        <p class="form__note" id="form-note">Goes straight to the Mashal inbox. We reply to the email you enter.</p>
-      </form>
-
+      <p class="section-close reveal">
+        Want your school in these frames?
+        <a class="link" href="contact.html">Book the first session</a>
+      </p>
     </div>
   </section>
 
@@ -200,7 +199,6 @@
       </nav>
       <div>
         <h2 class="footer__heading">Contact</h2>
-        <!-- Real contact links — keep in sync with index.html. -->
         <div class="footer__social">
           <a class="footer__social-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.mashal.ai@gmail.com" target="_blank" rel="noopener" aria-label="Email Mashal (opens Gmail compose)" title="contact.mashal.ai@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -222,6 +220,5 @@
 
 <script src="js/nav.js" defer></script>
 <script src="js/scroll-reveal.js" defer></script>
-<script src="js/form.js" defer></script>
 </body>
 </html>

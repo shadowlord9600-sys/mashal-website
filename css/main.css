@@ -189,6 +189,15 @@ a { color: inherit; }
 }
 .link:hover { background-size: 100% 1.5px; }
 
+/* Quiet closing line under a section's cards — a nudge, not a banner. */
+.section-close {
+  margin-top: var(--space-2xl);
+  text-align: center;
+  font-size: var(--step-0);
+  color: var(--text-body);
+}
+.section-close .link { margin-left: 0.35em; }
+
 /* ==========================================================================
    Cards — the workhorse. Detail lives in cards, not paragraphs.
    ========================================================================== */

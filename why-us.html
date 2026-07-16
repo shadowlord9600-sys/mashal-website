@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bring Mashal to your school — Contact</title>
-<meta name="description" content="Book a Mashal session for your school. You provide a lab slot and students; we bring the curriculum, the instructor and the materials — free.">
+<title>Why us — Mashal</title>
+<meta name="description" content="What students walk away with, and what it costs the school: nothing. Why Mashal is worth one lab period.">
 <meta name="theme-color" content="#0D0B21">
-<meta property="og:title" content="Bring Mashal to your school — Contact">
-<meta property="og:description" content="You provide a lab slot and students. We bring the rest — free.">
+<meta property="og:title" content="Why us — Mashal">
+<meta property="og:description" content="What students walk away with, and what it costs the school: nothing.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/images/logo.png">
 <link rel="icon" href="assets/images/logo-transparent.png" type="image/png">
@@ -20,7 +20,6 @@
 
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
 
@@ -40,9 +39,9 @@
     <nav class="nav__menu" id="nav-menu" aria-label="Main">
       <a class="nav__link" href="index.html">Home</a>
       <a class="nav__link" href="about.html">About</a>
-      <a class="nav__link" href="why-us.html">Why us</a>
+      <a class="nav__link" href="why-us.html" aria-current="page">Why us</a>
       <a class="nav__link" href="gallery.html">Gallery</a>
-      <a class="nav__link" href="contact.html" aria-current="page">Contact</a>
+      <a class="nav__link" href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
@@ -82,97 +81,75 @@
       </g>
     </svg>
     <div class="container">
-      <p class="eyebrow reveal">Contact</p>
-      <h1 class="reveal d1">Bring Mashal to your school.</h1>
+      <p class="eyebrow reveal">Why us</p>
+      <h1 class="reveal d1">One lab period. Two clear wins.</h1>
       <p class="reveal d2">
-        You provide a lab slot and a group of students. We bring everything else —
-        and it costs the school nothing.
+        What students walk away with, and what it asks of the school — which is
+        deliberately almost nothing.
       </p>
     </div>
   </section>
 
-  <!-- ===================== FORM ===================== -->
-  <section class="section section--white on-light" id="form">
-    <div class="container contact">
-
-      <div class="contact__aside reveal">
-        <h2>Let's Connect</h2>
-        <p class="contact__intro">
-          We're open to collaboration, questions, partnerships, and any ideas that can
-          help us expand our mission.
-        </p>
-
-        <a class="contact__direct" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.mashal.ai@gmail.com" target="_blank" rel="noopener">
-          <span class="contact__direct-icon"><img src="assets/icons/mail.svg" alt="" width="48" height="48"></span>
-          <span class="contact__direct-body">
-            <span class="contact__direct-label">Email</span>
-            <span class="contact__direct-value">contact.mashal.ai@gmail.com</span>
-          </span>
-        </a>
-
-        <!-- Instagram. -->
-        <a class="contact__direct" href="https://www.instagram.com/mashal_ai/" target="_blank" rel="noopener">
-          <span class="contact__direct-icon"><img src="assets/icons/instagram.svg" alt="" width="48" height="48"></span>
-          <span class="contact__direct-body">
-            <span class="contact__direct-label">Instagram</span>
-            <span class="contact__direct-value">@mashal_ai</span>
-          </span>
-        </a>
+  <!-- ===================== FOR STUDENTS ===================== -->
+  <section class="section section--white on-light" id="students">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">For students</p>
+        <h2>They stop asking AI — and start directing it.</h2>
+        <p>Every session ends with something a student made, not something they watched.</p>
       </div>
 
-      <!-- Delivered via FormSubmit (formsubmit.co): submissions arrive in the
-           Mashal inbox directly — the visitor never leaves the page. form.js
-           submits over AJAX for the inline confirmation; without JS the form
-           still works as a plain POST to the same service.
-           NOTE: delivery starts after the one-time "Activate" email FormSubmit
-           sends to the address on first submission. -->
-      <form class="form reveal d1" id="contact-form"
-            action="https://formsubmit.co/contact.mashal.ai@gmail.com"
-            method="post">
-        <!-- FormSubmit config: email subject/format, no captcha interstitial
-             for the no-JS path, and a honeypot field bots fill but people
-             never see (submissions with it filled are dropped). -->
-        <input type="hidden" name="_subject" value="New message from the Mashal website">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" tabindex="-1" autocomplete="off"
-               style="display:none" aria-hidden="true">
+      <ul class="grid grid--3">
+        <li class="card reveal">
+          <span class="card__icon"><img src="assets/icons/build.svg" alt="" width="48" height="48"></span>
+          <h3>Something real to show</h3>
+          <p>A working website, an automation, a mini-CRM — built by them, in the session. The start of a portfolio years before graduation.</p>
+        </li>
+        <li class="card reveal d1">
+          <span class="card__icon"><img src="assets/icons/beyond-chat.svg" alt="" width="48" height="48"></span>
+          <h3>Skills past the chatbox</h3>
+          <p>Prompting is the front door, not the house. Students learn what these tools actually do — and how to make them do it.</p>
+        </li>
+        <li class="card reveal d2">
+          <span class="card__icon"><img src="assets/icons/careers.svg" alt="" width="48" height="48"></span>
+          <h3>A sense of direction</h3>
+          <p>Development, design, data, automation — seeing the paths early enough to steer their subjects and their next steps toward one.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-        <div class="form__row">
-          <label class="form__label" for="f-name">Your name</label>
-          <input class="form__input" type="text" id="f-name" name="name" autocomplete="name" required>
-        </div>
+  <!-- ===================== FOR SCHOOLS ===================== -->
+  <section class="section section--tint on-light" id="schools">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">For schools</p>
+        <h2>Everything to gain. Nothing on your plate.</h2>
+        <p>Designed so saying yes costs a school head as little as possible.</p>
+      </div>
 
-        <div class="form__row">
-          <label class="form__label" for="f-email">Email</label>
-          <input class="form__input" type="email" id="f-email" name="email" autocomplete="email" required>
-        </div>
+      <ul class="grid grid--3">
+        <li class="card reveal">
+          <span class="card__icon"><img src="assets/icons/lab.svg" alt="" width="48" height="48"></span>
+          <h3>Your lab, earning its keep</h3>
+          <p>The hardware is already paid for. An idle period becomes the most talked-about hour on the timetable.</p>
+        </li>
+        <li class="card reveal d1">
+          <span class="card__icon"><img src="assets/icons/clock.svg" alt="" width="48" height="48"></span>
+          <h3>Zero burden on staff</h3>
+          <p>We bring the instructor, curriculum and materials. Your teachers prepare nothing and lose no teaching time.</p>
+        </li>
+        <li class="card reveal d2">
+          <span class="card__icon"><img src="assets/icons/free.svg" alt="" width="48" height="48"></span>
+          <h3>No fee, no procurement</h3>
+          <p>There is no budget line. And parents see a school teaching the skills everyone else is only talking about.</p>
+        </li>
+      </ul>
 
-        <div class="form__row">
-          <label class="form__label" for="f-role">I'm writing as</label>
-          <select class="form__input form__select" id="f-role" name="role">
-            <option value="School">A school</option>
-            <option value="Teacher">A teacher</option>
-            <option value="Volunteer">A volunteer</option>
-            <option value="Parent or student">A parent or student</option>
-            <option value="Other">Something else</option>
-          </select>
-        </div>
-
-        <div class="form__row">
-          <label class="form__label" for="f-org">School or organisation <span class="form__optional">(optional)</span></label>
-          <input class="form__input" type="text" id="f-org" name="organisation" autocomplete="organization">
-        </div>
-
-        <div class="form__row">
-          <label class="form__label" for="f-msg">Message</label>
-          <textarea class="form__input form__textarea" id="f-msg" name="message" rows="5" required></textarea>
-        </div>
-
-        <button class="btn btn--primary form__submit" type="submit">Send message</button>
-        <p class="form__note" id="form-note">Goes straight to the Mashal inbox. We reply to the email you enter.</p>
-      </form>
-
+      <p class="section-close reveal">
+        Worth one period to find out?
+        <a class="link" href="contact.html">Start the conversation</a>
+      </p>
     </div>
   </section>
 
@@ -200,7 +177,6 @@
       </nav>
       <div>
         <h2 class="footer__heading">Contact</h2>
-        <!-- Real contact links — keep in sync with index.html. -->
         <div class="footer__social">
           <a class="footer__social-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.mashal.ai@gmail.com" target="_blank" rel="noopener" aria-label="Email Mashal (opens Gmail compose)" title="contact.mashal.ai@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -222,6 +198,5 @@
 
 <script src="js/nav.js" defer></script>
 <script src="js/scroll-reveal.js" defer></script>
-<script src="js/form.js" defer></script>
 </body>
 </html>

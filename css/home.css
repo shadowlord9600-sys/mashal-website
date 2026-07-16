@@ -73,67 +73,169 @@
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l3.6 3.6L18 8' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-/* ---- Mark: ring + disc + pills ----------------------------------------- */
-.hero__mark {
-  position: relative;
-  display: grid; place-items: center;
-  width: min(100%, 25rem);
-  aspect-ratio: 1;
+/* ==========================================================================
+   The builder — a student prompt "types" and a mini site assembles above it,
+   looping forever. Every animated element shares one BUILD-cycle duration so
+   the whole scene stays in sync; each defines its own phase inside it.
+
+   Base styles below are the FINISHED state: no-JS visitors and reduced-motion
+   users see a complete static mock, never a blank card.
+   ========================================================================== */
+.hero__visual {
+  width: min(100%, 26rem);
   margin-inline: auto;
 }
-
-.ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.ring__track { fill: none; stroke: rgba(207, 201, 240, 0.10); stroke-width: 1.5; }
-.ring__stroke {
-  fill: none;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;   /* hidden until drawn; starts at 12 o'clock */
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-  filter: drop-shadow(0 0 6px rgba(139, 122, 250, 0.55));
+.builder {
+  display: grid;
+  gap: var(--space-md);
+  filter: drop-shadow(0 24px 60px rgba(13, 11, 33, 0.55));
 }
 
-.hero__disc {
-  width: 66%;
-  box-shadow:
-    0 0 0 1px rgba(207, 201, 240, 0.16),
-    0 18px 60px rgba(13, 11, 33, 0.6),
-    0 0 90px rgba(91, 63, 224, 0.22);
+/* ---- The mini site ------------------------------------------------------ */
+.builder__site {
+  background: linear-gradient(165deg, #FFFFFF, var(--bg-tint));
+  border: 1px solid rgba(207, 201, 240, 0.28);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
-.hero__disc img { width: 84%; height: 84%; }
-
-/* Floating labels — what a student actually walks out having done. */
-.pill {
-  position: absolute;
-  padding: 0.55em 1em;
-  background: rgba(255, 255, 255, 0.97);
-  color: var(--text-ink);
-  font-size: var(--step--1);
-  font-weight: var(--fw-semibold);
-  white-space: nowrap;
+.builder__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(26, 22, 80, 0.06);
+  border-bottom: 1px solid rgba(26, 22, 80, 0.08);
+}
+.builder__dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: rgba(26, 22, 80, 0.18); }
+.builder__url {
+  margin-left: 0.5rem;
+  padding: 0.15em 0.9em;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 22, 80, 0.1);
   border-radius: var(--radius-pill);
-  box-shadow: 0 10px 30px rgba(13, 11, 33, 0.45);
-  z-index: 2;
 }
-.pill--1 { top: 6%; left: -6%; }
-.pill--2 { bottom: 20%; right: -8%; }
-.pill--3 { bottom: -2%; left: 8%; }
+.builder__canvas {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem 0.9rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+  min-height: 11rem;
+  align-content: start;
+}
 
-/* ---- Ambient motion ----------------------------------------------------- */
-/* Runs continuously once the load sequence has finished, so the hero keeps a
-   slow pulse of life instead of freezing after one moment. */
-.js .hero.is-ready .hero__disc,
-.hero.is-settled .hero__disc { animation: floaty 7s var(--ease-in-out) 1.9s infinite; }
-.js .hero.is-ready .pill--1, .hero.is-settled .pill--1 { animation: floaty 5.4s var(--ease-in-out) 1.9s infinite; }
-.js .hero.is-ready .pill--2, .hero.is-settled .pill--2 { animation: floaty 6.2s var(--ease-in-out) 2.3s infinite; }
-.js .hero.is-ready .pill--3, .hero.is-settled .pill--3 { animation: floaty 5.8s var(--ease-in-out) 2.1s infinite; }
+/* Skeleton elements of the site being built. */
+.b-el { border-radius: 0.4rem; background: rgba(26, 22, 80, 0.1); }
+.b-el--logo { width: 2rem; height: 2rem; border-radius: 50%; background: var(--cta-gradient); }
+.b-el--nav  { height: 0.7rem; align-self: center; width: 60%; justify-self: end; }
+.b-el--head {
+  grid-column: 1 / -1;
+  height: 1.5rem;
+  width: 72%;
+  margin-top: 0.4rem;
+  background: linear-gradient(90deg, rgba(43, 84, 162, 0.75), rgba(91, 63, 224, 0.65));
+}
+.b-el--line { grid-column: 1 / -1; height: 0.65rem; width: 92%; }
+.b-el--short { width: 64%; }
+.b-el--btn {
+  grid-column: 1 / -1;
+  width: 7.5rem;
+  height: 1.9rem;
+  margin-top: 0.3rem;
+  border-radius: var(--radius-pill);
+  background: var(--cta-gradient);
+}
+
+/* ---- The prompt card ----------------------------------------------------- */
+.builder__prompt {
+  background: rgba(13, 11, 33, 0.92);
+  border: 1px solid rgba(207, 201, 240, 0.22);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+}
+.builder__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+  margin-bottom: 0.45rem;
+}
+.builder__cmdline {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.6rem + 0.5vw, 0.86rem);
+  color: var(--text-on-dark);
+  white-space: nowrap;
+}
+.builder__cmdline::before { content: ">"; margin-right: 0.5em; color: var(--blue-on-dark); }
+.builder__cmd {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 30ch;          /* the full sentence; typing animates this */
+}
+.builder__caret {
+  width: 2px; height: 1.05em;
+  margin-left: 2px;
+  background: var(--cyan-on-dark);
+  flex: none;
+}
+.builder__done {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--blue-on-dark);
+  margin-top: 0.5rem;
+}
+
+/* ---- Choreography (JS present + hero started only) ----------------------- */
+/* One shared cycle keeps all pieces locked together. */
+.js .hero.is-ready .builder,
+.hero.is-settled .builder { animation: floaty 8s var(--ease-in-out) 2.4s infinite; }
+
+.js .hero.is-ready .builder__cmd     { animation: b-type var(--build-cycle, 9.5s) infinite; }
+.js .hero.is-ready .builder__caret   { animation: b-caret 0.9s steps(1) infinite; }
+.js .hero.is-ready .builder__done    { animation: b-done var(--build-cycle, 9.5s) var(--ease-out) infinite; }
+.js .hero.is-ready .b-el             { animation: b-in var(--build-cycle, 9.5s) var(--ease-out) infinite; }
+/* Stagger via per-element phase custom property read inside the keyframes
+   trick doesn't exist in CSS — so each element gets its own keyframes slot. */
+.js .hero.is-ready .b-el--logo  { animation-name: b-in-1; }
+.js .hero.is-ready .b-el--nav   { animation-name: b-in-2; }
+.js .hero.is-ready .b-el--head  { animation-name: b-in-3; }
+.js .hero.is-ready .b-el--line:not(.b-el--short) { animation-name: b-in-4; }
+.js .hero.is-ready .b-el--short { animation-name: b-in-5; }
+.js .hero.is-ready .b-el--btn   { animation-name: b-in-6; }
+
+/* Typing: 5%->30% of the cycle, one character per step. */
+@keyframes b-type {
+  0%, 5%     { max-width: 0; }
+  5.01%      { max-width: 0; animation-timing-function: steps(30, end); }
+  30%, 92%   { max-width: 30ch; }
+  96%, 100%  { max-width: 30ch; opacity: 0; }
+}
+@keyframes b-caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes b-done {
+  0%, 33%    { opacity: 0; transform: translateY(4px); }
+  38%, 90%   { opacity: 1; transform: none; }
+  96%, 100%  { opacity: 0; }
+}
+/* Site pieces land one after another while the "build" runs. */
+@keyframes b-in-1 { 0%, 36% { opacity: 0; transform: translateY(8px); } 41%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+@keyframes b-in-2 { 0%, 41% { opacity: 0; transform: translateY(8px); } 46%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+@keyframes b-in-3 { 0%, 47% { opacity: 0; transform: translateY(8px); } 53%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+@keyframes b-in-4 { 0%, 54% { opacity: 0; transform: translateY(8px); } 60%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+@keyframes b-in-5 { 0%, 60% { opacity: 0; transform: translateY(8px); } 66%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+@keyframes b-in-6 { 0%, 66% { opacity: 0; transform: translateY(8px); } 72%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
 
 /* ---- Load sequence ------------------------------------------------------ */
 /* Only hide when JS is present to un-hide it. */
-.js .hero-seq, .js .pill { opacity: 0; }
-.js .hero-seq { transform: translateY(0.9rem); }
+.js .hero-seq { opacity: 0; transform: translateY(0.9rem); }
+.js .hero__visual { opacity: 0; }
 
 .js .hero.is-ready .hero-seq {
   animation: hero-in var(--dur-slow) var(--ease-out) var(--seq-delay, 0ms) forwards;
@@ -142,26 +244,9 @@
   from { opacity: 0; transform: translateY(0.9rem); }
   to   { opacity: 1; transform: none; }
 }
-
-.js .hero.is-ready .ring__stroke { animation: ring-draw var(--dur-ring) var(--ease-in-out) forwards; }
-@keyframes ring-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-
-/* The disc settles in, then hands over to the ambient float above. */
-.js .hero.is-ready .hero__disc {
-  animation: disc-in 900ms var(--ease-out) 240ms backwards,
-             floaty 7s var(--ease-in-out) 1.9s infinite;
-}
-@keyframes disc-in {
-  from { opacity: 0; transform: scale(0.94); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* Pills pop after the copy, then float. */
-.js .hero.is-ready .pill--1 { animation: pill-in 520ms var(--ease-out) 1500ms forwards, floaty 5.4s var(--ease-in-out) 2.1s infinite; }
-.js .hero.is-ready .pill--2 { animation: pill-in 520ms var(--ease-out) 1620ms forwards, floaty 6.2s var(--ease-in-out) 2.3s infinite; }
-.js .hero.is-ready .pill--3 { animation: pill-in 520ms var(--ease-out) 1740ms forwards, floaty 5.8s var(--ease-in-out) 2.5s infinite; }
-@keyframes pill-in {
-  from { opacity: 0; transform: translateY(0.6rem) scale(0.92); }
+.js .hero.is-ready .hero__visual { animation: visual-in 800ms var(--ease-out) 250ms forwards; }
+@keyframes visual-in {
+  from { opacity: 0; transform: translateY(1rem) scale(0.97); }
   to   { opacity: 1; transform: none; }
 }
 
@@ -340,28 +425,31 @@
    ========================================================================== */
 @media (max-width: 61.99em) {
   .hero__inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
-  .hero__mark { grid-row: 1; width: min(70vw, 18rem); margin-bottom: var(--space-xl); }
+  .hero__visual { grid-row: 1; width: min(80vw, 22rem); margin-bottom: var(--space-xl); }
   .hero__copy { grid-row: 2; }
   .hero__lede { margin-inline: auto; }
   .hero__actions, .hero__trust { justify-content: center; }
+  /* Keep the prompt card's text readable inside its own edges. */
+  .builder__prompt { text-align: left; }
 }
 
 @media (max-width: 35.99em) {
-  .hero__mark { width: min(62vw, 14rem); }
+  .hero__visual { width: min(88vw, 19rem); }
   .hero__actions { flex-direction: column; align-items: stretch; width: 100%; }
   .hero__actions .btn { width: 100%; }
   .hero__trust { gap: var(--space-md); }
-  /* Pills would collide with the copy at this width. */
-  .pill--1 { left: -4%; top: 2%; }
-  .pill--2 { right: -4%; }
-  .pill--3 { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Ambient float is the first thing to go — it never stops, so it is the
-     most intrusive for anyone who asked for less motion. */
-  .hero__disc, .pill, .js .hero.is-ready .hero__disc,
-  .js .hero.is-ready .pill--1, .js .hero.is-ready .pill--2, .js .hero.is-ready .pill--3 {
+  /* The builder loop never stops, so it's the first thing to go — show the
+     finished static mock instead. Base styles ARE the finished state. */
+  .builder, .builder__cmd, .builder__caret, .builder__done, .b-el,
+  .js .hero__visual,
+  .js .hero.is-ready .builder,
+  .js .hero.is-ready .builder__cmd,
+  .js .hero.is-ready .builder__caret,
+  .js .hero.is-ready .builder__done,
+  .js .hero.is-ready .b-el {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
