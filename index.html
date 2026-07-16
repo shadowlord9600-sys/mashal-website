@@ -166,57 +166,103 @@
     </div>
   </section>
 
-  <!-- ===================== WHAT WE DO ===================== -->
+  <!-- ===================== THE SHIFT (stats) ===================== -->
+  <!-- Industry stats from the one-pager. These are cited third-party figures
+       (PwC / NACE), not Mashal results — the source line is part of the deal. -->
+  <section class="section section--white on-light stats" id="the-shift">
+    <div class="container">
+      <p class="eyebrow stats__eyebrow reveal">The shift is already here</p>
+      <div class="stats__grid">
+        <div class="stat reveal">
+          <span class="stat__num">7×</span>
+          <p class="stat__label">growth in jobs that require AI skills</p>
+        </div>
+        <div class="stat reveal d1">
+          <span class="stat__num">1 in 3</span>
+          <p class="stat__label">entry-level jobs now ask for AI skills</p>
+        </div>
+        <div class="stat reveal d2">
+          <span class="stat__num">62%</span>
+          <p class="stat__label">higher pay for workers with AI skills</p>
+        </div>
+      </div>
+      <p class="stats__src reveal d3">Sources: PwC 2026 Global AI Jobs Barometer · NACE 2026</p>
+    </div>
+  </section>
+
+  <!-- ===================== THE CURRICULUM ===================== -->
   <section class="section section--tint on-light" id="what-we-do">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Planned programme</p>
-        <h2>Eight sessions. Thirty minutes each.</h2>
-        <p>One full programme per school — eight half-hour sessions across the term, moving through three tracks.</p>
+        <p class="eyebrow">The curriculum</p>
+        <h2>What students explore over eight sessions.</h2>
       </div>
 
-      <!-- The lit path: three stations along one gradient line that draws
-           itself in — the hero ring's stroke language, unrolled. Markers are
-           decorative (aria-hidden); the headings carry the structure. DOM
-           order is station-by-station so screen readers hear t1, t2, t3. -->
-      <div class="path reveal">
-        <svg class="path__line" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <defs>
-            <linearGradient id="path-gradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#2B54A2"/>
-              <stop offset="100%" stop-color="#4F1675"/>
-            </linearGradient>
-          </defs>
-          <path class="path__track" vector-effect="non-scaling-stroke"
-                d="M 0 78 C 70 38, 130 38, 200 60 C 290 88, 310 88, 400 74 C 500 58, 520 40, 600 60 C 690 82, 710 82, 800 70 C 900 56, 920 36, 1000 60 C 1080 80, 1140 72, 1200 52"/>
-          <path class="path__stroke" vector-effect="non-scaling-stroke" pathLength="1" stroke="url(#path-gradient)"
-                d="M 0 78 C 70 38, 130 38, 200 60 C 290 88, 310 88, 400 74 C 500 58, 520 40, 600 60 C 690 82, 710 82, 800 70 C 900 56, 920 36, 1000 60 C 1080 80, 1140 72, 1200 52"/>
-        </svg>
-
-        <div class="path__text path__text--s1">
-          <h3>AI Beyond Chat</h3>
-          <p>An intro that resets what students think these tools are — and where a chatbox stops being the point.</p>
+      <!-- The programme at a glance — the four facts a school head checks
+           the timetable against. -->
+      <div class="glance reveal" role="group" aria-label="The programme at a glance">
+        <div class="glance__item">
+          <span class="glance__big">8 workshops</span>
+          <span class="glance__sub">30 minutes each</span>
         </div>
-        <span class="path__marker path__marker--s1" aria-hidden="true">
-          <img src="assets/icons/beyond-chat.svg" alt="" width="48" height="48">
-        </span>
-
-        <span class="path__marker path__marker--s2" aria-hidden="true">
-          <img src="assets/icons/build.svg" alt="" width="48" height="48">
-        </span>
-        <div class="path__text path__text--s2">
-          <h3>Build With AI</h3>
-          <p>Hands-on. Students leave having built something real: a working site, an automation, a mini-CRM.</p>
+        <div class="glance__item">
+          <span class="glance__big">2 a week</span>
+          <span class="glance__sub">over about a month</span>
         </div>
-
-        <div class="path__text path__text--s3">
-          <h3>AI for Careers</h3>
-          <p>Portfolios, résumés and career paths — using AI for what comes after school, not just tonight's homework.</p>
+        <div class="glance__item">
+          <span class="glance__big">On site</span>
+          <span class="glance__sub">hosted at your school</span>
         </div>
-        <span class="path__marker path__marker--s3" aria-hidden="true">
-          <img src="assets/icons/careers.svg" alt="" width="48" height="48">
-        </span>
+        <div class="glance__item">
+          <span class="glance__big">Grades 9 &amp; 10</span>
+          <span class="glance__sub">beginner friendly</span>
+        </div>
       </div>
+
+      <!-- The eight sessions, in teaching order — a genuine sequence, so the
+           numbering is earning its place. -->
+      <ol class="syllabus">
+        <li class="syl reveal">
+          <span class="syl__num" aria-hidden="true">01</span>
+          <h3>Beyond the chatbot</h3>
+          <p>The full landscape of AI.</p>
+        </li>
+        <li class="syl reveal d1">
+          <span class="syl__num" aria-hidden="true">02</span>
+          <h3>Building with AI</h3>
+          <p>Making things end to end.</p>
+        </li>
+        <li class="syl reveal d2">
+          <span class="syl__num" aria-hidden="true">03</span>
+          <h3>Coding basics</h3>
+          <p>Simple programs and sites.</p>
+        </li>
+        <li class="syl reveal d3">
+          <span class="syl__num" aria-hidden="true">04</span>
+          <h3>Image generation</h3>
+          <p>Original art from words.</p>
+        </li>
+        <li class="syl reveal">
+          <span class="syl__num" aria-hidden="true">05</span>
+          <h3>Video &amp; media</h3>
+          <p>Turning ideas into content.</p>
+        </li>
+        <li class="syl reveal d1">
+          <span class="syl__num" aria-hidden="true">06</span>
+          <h3>Research &amp; study</h3>
+          <p>Learning and analysing faster.</p>
+        </li>
+        <li class="syl reveal d2">
+          <span class="syl__num" aria-hidden="true">07</span>
+          <h3>Prompting well</h3>
+          <p>Getting great results.</p>
+        </li>
+        <li class="syl reveal d3">
+          <span class="syl__num" aria-hidden="true">08</span>
+          <h3>Using AI responsibly</h3>
+          <p>Safety and honest work.</p>
+        </li>
+      </ol>
     </div>
   </section>
 

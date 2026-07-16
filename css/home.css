@@ -213,6 +213,148 @@
 .js .hero-seq[data-seq="5"] { --seq-delay: 1400ms; }
 
 /* ==========================================================================
+   The shift is already here — cited industry stats (one-pager numbers).
+   ========================================================================== */
+.stats { padding-block: clamp(3.5rem, 2.5rem + 4vw, 5.5rem); }
+.stats__eyebrow { display: flex; justify-content: center; width: 100%; }
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-lg);
+}
+.stat { text-align: center; }
+.stat__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-5);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-xs);
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .stat__num { background: none; color: var(--brand-purple); -webkit-text-fill-color: currentColor; }
+}
+.stat__label {
+  color: var(--text-body);
+  font-size: var(--step-0);
+  max-width: 22ch;
+  margin-inline: auto;
+}
+.stats__src {
+  margin-top: var(--space-xl);
+  text-align: center;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 47.99em) {
+  .stats__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+}
+
+/* ==========================================================================
+   The programme at a glance — the pitch deck's dark panel, as a band.
+   ========================================================================== */
+.glance {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+  background:
+    radial-gradient(24rem 12rem at 88% 0%, rgba(96, 165, 250, 0.18), transparent 62%),
+    linear-gradient(135deg, var(--bg-dark-2), #251C63);
+  border: 1px solid rgba(207, 201, 240, 0.16);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+.glance__item {
+  display: grid;
+  gap: var(--space-2xs);
+  align-content: start;
+}
+.glance__item:not(:first-child) {
+  padding-left: var(--space-lg);
+  border-left: 1px solid rgba(207, 201, 240, 0.14);
+}
+.glance__big {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  color: #FFFFFF;                       /* 16.5:1 on the panel's darkest end */
+}
+.glance__sub { font-size: var(--step--1); color: var(--text-on-dark-soft); }
+
+@media (max-width: 61.99em) {
+  .glance { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-xl); padding: var(--space-xl); }
+  .glance__item:nth-child(3) { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 35.99em) {
+  .glance { grid-template-columns: 1fr; }
+  .glance__item:not(:first-child) { padding-left: 0; border-left: 0; padding-top: var(--space-md); border-top: 1px solid rgba(207, 201, 240, 0.14); }
+}
+
+/* ==========================================================================
+   The syllabus — eight sessions in teaching order (a genuine sequence,
+   hence the numbers). Compact tiles, four across like the deck.
+   ========================================================================== */
+.syllabus {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+.syl {
+  background: var(--surface);
+  border: 1px solid rgba(26, 22, 80, 0.09);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+.syl:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(91, 63, 224, 0.28);
+}
+.syl__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-sm);
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .syl__num { background: none; color: var(--brand-purple); -webkit-text-fill-color: currentColor; }
+}
+.syl h3 { font-size: var(--step-0); margin-bottom: var(--space-2xs); }
+.syl p { font-size: var(--step--1); color: var(--text-muted); }
+
+@media (max-width: 61.99em) { .syllabus { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 35.99em) { .syllabus { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .syl:hover { transform: none; }
+}
+
+/* ==========================================================================
    The shift — the visual half of the "gap" split
    ========================================================================== */
 .shift {
