@@ -7,3 +7,9 @@ desktop.ini
 
 # Generated proof sheet (rebuild with: node tools/proof.js)
 tools/proof.png
+
+# Vercel local project link
+.vercel/
+
+.vercel
+.env*
