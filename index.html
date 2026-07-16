@@ -50,6 +50,46 @@
   <!-- ===================== HERO ===================== -->
   <section class="hero on-dark" id="hero">
     <div class="hero__glow" aria-hidden="true"></div>
+
+    <!-- Constellation: faint node-and-line network in the dark. Reads as "AI"
+         and as the brand story — points of light in the dark. Decorative,
+         whisper-quiet, and the dots twinkle slowly (not under reduced motion). -->
+    <svg class="constellation" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="const-grad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stop-color="#60A5FA"/>
+          <stop offset="100%" stop-color="#A78BFA"/>
+        </linearGradient>
+      </defs>
+      <g class="constellation__lines" stroke="url(#const-grad)">
+        <path d="M620 90 700 150 790 80 860 170 930 110"/>
+        <path d="M700 150 760 230 880 260 860 170"/>
+        <path d="M880 260 960 210 930 110"/>
+        <path d="M60 480 140 530 220 470 120 400 60 480"/>
+        <path d="M140 530 260 540"/>
+        <path d="M420 60 510 110"/>
+      </g>
+      <g class="constellation__dots" fill="url(#const-grad)">
+        <circle class="tw tw--1" cx="620" cy="90" r="3"/>
+        <circle cx="700" cy="150" r="2"/>
+        <circle class="tw tw--2" cx="790" cy="80" r="2.5"/>
+        <circle cx="860" cy="170" r="2"/>
+        <circle class="tw tw--3" cx="930" cy="110" r="3"/>
+        <circle cx="760" cy="230" r="2"/>
+        <circle class="tw tw--2" cx="880" cy="260" r="2.5"/>
+        <circle cx="960" cy="210" r="2"/>
+        <circle class="tw tw--1" cx="60" cy="480" r="2.5"/>
+        <circle cx="140" cy="530" r="2"/>
+        <circle class="tw tw--3" cx="220" cy="470" r="3"/>
+        <circle cx="120" cy="400" r="2"/>
+        <circle cx="260" cy="540" r="2"/>
+        <circle class="tw tw--2" cx="420" cy="60" r="2.5"/>
+        <circle cx="510" cy="110" r="2"/>
+        <circle class="tw tw--1" cx="510" cy="520" r="2.5"/>
+        <circle class="tw tw--3" cx="350" cy="150" r="2"/>
+      </g>
+    </svg>
+
     <div class="container hero__inner">
 
       <div class="hero__copy">

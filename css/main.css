@@ -522,6 +522,38 @@ a { color: inherit; }
 }
 
 /* ==========================================================================
+   Constellation — faint node-and-line network on the dark heroes.
+   Decorative only (aria-hidden): reads as "AI", and as the brand's own story
+   of points of light in the dark. Kept at whisper opacity so text contrast
+   on the dark backgrounds is untouched.
+   ========================================================================== */
+.constellation {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;               /* above the glow (later in DOM), below content */
+  pointer-events: none;
+}
+.constellation__lines path {
+  fill: none;
+  stroke-width: 1;
+  opacity: 0.22;
+}
+.constellation__dots circle { opacity: 0.55; }
+/* Page heroes are shorter and text-centred — go even quieter there. */
+.constellation--soft { opacity: 0.65; }
+
+/* A few dots breathe slowly, out of phase — alive, not busy. */
+.tw { animation: twinkle 4.2s var(--ease-in-out) infinite alternate; }
+.tw--2 { animation-duration: 5.4s; animation-delay: 0.9s; }
+.tw--3 { animation-duration: 6.2s; animation-delay: 1.7s; }
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to   { opacity: 0.9; }
+}
+
+/* ==========================================================================
    Motion
    ========================================================================== */
 
@@ -566,4 +598,5 @@ a { color: inherit; }
   .btn:hover, .card:hover, .nav__brand:hover .logo-disc, .footer__list a:hover,
   .footer__social-btn:hover { transform: none; }
   .card:hover .card__icon { transform: none; }
+  .tw { animation: none; opacity: 0.55; }
 }
