@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bring Mashal to your school — Contact</title>
+<meta name="description" content="Book a Mashal session for your school. You provide a lab slot and students; we bring the curriculum, the instructor and the materials — free.">
+<meta name="theme-color" content="#0D0B21">
+<meta property="og:title" content="Bring Mashal to your school — Contact">
+<meta property="og:description" content="You provide a lab slot and students. We bring the rest — free.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/logo.png">
+<link rel="icon" href="assets/images/logo-transparent.png" type="image/png">
+
+<script>document.documentElement.classList.replace('no-js','js');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Nastaliq+Urdu:wght@400..700&display=swap">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav on-dark" id="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="index.html" aria-label="Mashal — home">
+      <span class="logo-disc"><img src="assets/images/logo-transparent.png" alt="" width="120" height="120"></span>
+      <span class="nav__wordmark">Mashal</span>
+    </a>
+    <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+      <span class="nav__toggle-box" aria-hidden="true">
+        <span class="nav__toggle-bar"></span><span class="nav__toggle-bar"></span><span class="nav__toggle-bar"></span>
+      </span>
+    </button>
+    <nav class="nav__menu" id="nav-menu" aria-label="Main">
+      <a class="nav__link" href="index.html">Home</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero on-dark">
+    <div class="container">
+      <p class="eyebrow reveal">Contact</p>
+      <h1 class="reveal d1">Bring Mashal to your school.</h1>
+      <p class="reveal d2">
+        You provide a lab slot and a group of students. We bring everything else —
+        and it costs the school nothing.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FORM ===================== -->
+  <section class="section section--white on-light" id="form">
+    <div class="container contact">
+
+      <div class="contact__aside reveal">
+        <h2>Let's Connect</h2>
+        <p class="contact__intro">
+          We're open to collaboration, questions, partnerships, and any ideas that can
+          help us expand our mission.
+        </p>
+
+        <a class="contact__direct" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.mashal.ai@gmail.com" target="_blank" rel="noopener">
+          <span class="contact__direct-icon"><img src="assets/icons/mail.svg" alt="" width="48" height="48"></span>
+          <span class="contact__direct-body">
+            <span class="contact__direct-label">Email</span>
+            <span class="contact__direct-value">contact.mashal.ai@gmail.com</span>
+          </span>
+        </a>
+
+        <!-- Instagram. -->
+        <a class="contact__direct" href="https://www.instagram.com/mashal_ai/" target="_blank" rel="noopener">
+          <span class="contact__direct-icon"><img src="assets/icons/instagram.svg" alt="" width="48" height="48"></span>
+          <span class="contact__direct-body">
+            <span class="contact__direct-label">Instagram</span>
+            <span class="contact__direct-value">@mashal_ai</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Static form. No backend (CONTEXT.md non-goal), so submitting opens a
+           Gmail compose tab with To/Subject/Body pre-filled (form.js). The
+           mailto action below is only the no-JS fallback.
+           To move to a hosted handler later: point action at the Formspree
+           endpoint and delete data-mailto — form.js then stands down and the
+           browser performs a normal POST. -->
+      <form class="form reveal d1" id="contact-form"
+            data-mailto="contact.mashal.ai@gmail.com"
+            action="mailto:contact.mashal.ai@gmail.com"
+            method="post"
+            enctype="text/plain">
+        <div class="form__row">
+          <label class="form__label" for="f-name">Your name</label>
+          <input class="form__input" type="text" id="f-name" name="name" autocomplete="name" required>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-email">Email</label>
+          <input class="form__input" type="email" id="f-email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-role">I'm writing as</label>
+          <select class="form__input form__select" id="f-role" name="role">
+            <option value="School">A school</option>
+            <option value="Teacher">A teacher</option>
+            <option value="Volunteer">A volunteer</option>
+            <option value="Parent or student">A parent or student</option>
+            <option value="Other">Something else</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-org">School or organisation <span class="form__optional">(optional)</span></label>
+          <input class="form__input" type="text" id="f-org" name="organisation" autocomplete="organization">
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-msg">Message</label>
+          <textarea class="form__input form__textarea" id="f-msg" name="message" rows="5" required></textarea>
+        </div>
+
+        <button class="btn btn--primary form__submit" type="submit">Send message</button>
+        <p class="form__note" id="form-note">This opens Gmail with the message ready to send.</p>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="footer__brand" href="index.html" aria-label="Mashal — home">
+          <span class="logo-disc"><img src="assets/images/logo-transparent.png" alt="" width="120" height="120"></span>
+          <span class="footer__wordmark">Mashal</span>
+        </a>
+        <p class="footer__blurb">Practical AI literacy for students in Pakistani schools that already have the labs.</p>
+      </div>
+      <nav aria-label="Footer">
+        <h2 class="footer__heading">Site</h2>
+        <ul class="footer__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="footer__heading">Contact</h2>
+        <!-- Real contact links — keep in sync with index.html. -->
+        <div class="footer__social">
+          <a class="footer__social-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.mashal.ai@gmail.com" target="_blank" rel="noopener" aria-label="Email Mashal (opens Gmail compose)" title="contact.mashal.ai@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="footer__social-btn" href="https://www.instagram.com/mashal_ai/" target="_blank" rel="noopener" aria-label="Mashal on Instagram" title="@mashal_ai">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.8" stroke="currentColor" stroke-width="1.7"/><circle cx="16.9" cy="7.1" r="1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__meaning">
+        <span class="urdu" lang="ur">مشعل</span> — Urdu for <em>torch</em>: something you carry to light the way.
+      </p>
+      <p>&copy; 2026 Mashal</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js" defer></script>
+<script src="js/scroll-reveal.js" defer></script>
+<script src="js/form.js" defer></script>
+</body>
+</html>

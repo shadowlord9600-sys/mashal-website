@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Mashal — About
+   ========================================================================== */
+
+.page-hero .urdu {
+  font-family: var(--font-urdu);
+  font-size: 1.1em;
+  line-height: 1;
+  color: var(--violet-on-dark);
+}
+
+/* ==========================================================================
+   Story — the visual half of the split.
+   The overheard answer, and what never gets said next.
+   ========================================================================== */
+.quote-card {
+  position: relative;
+  padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+  background: linear-gradient(160deg, #FFFFFF, var(--bg-tint));
+  border: 1px solid rgba(26, 22, 80, 0.09);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+.quote-card__mark {
+  position: absolute;
+  top: 0.35rem; left: var(--space-lg);
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--brand-blue);
+  opacity: 0.18;
+}
+.quote-card__text {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-ink);
+  margin-bottom: var(--space-xs);
+}
+.quote-card__attr {
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+.quote-card__foot {
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(26, 22, 80, 0.1);
+}
+.quote-card__foot-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--brand-purple);
+  margin-bottom: var(--space-sm);
+}
+.quote-card__list { display: grid; gap: var(--space-xs); }
+.quote-card__list li {
+  position: relative;
+  padding-left: 1.35rem;
+  font-size: var(--step--1);
+  font-weight: var(--fw-medium);
+  color: var(--text-body);
+}
+.quote-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 0.4rem; height: 0.4rem;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+}
+
+/* ==========================================================================
+   Mission & Aim
+   ========================================================================== */
+.mv { display: grid; align-content: start; }
+.mv__tag {
+  justify-self: start;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--brand-purple);
+  padding: 0.3em 0.8em;
+  background: rgba(91, 63, 224, 0.07);
+  border: 1px solid rgba(91, 63, 224, 0.18);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-lg);
+}
+.mv__statement {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-ink);
+  margin-bottom: var(--space-md);
+  text-wrap: balance;
+}
+.mv__statement strong { font-weight: var(--fw-bold); color: var(--brand-purple); }
+.mv__support { color: var(--text-body); font-size: var(--step--1); line-height: 1.6; }
+
+/* ==========================================================================
+   Team
+   ========================================================================== */
+.team__card { display: grid; grid-template-columns: auto 1fr; gap: var(--space-lg); align-items: start; }
+.team__avatar {
+  display: grid; place-items: center;
+  width: 4.5rem; height: 4.5rem;
+  border-radius: 50%;
+  background: var(--bg-tint);
+  border: 1px solid rgba(26, 22, 80, 0.08);
+  flex: none;
+}
+.team__avatar svg { width: 68%; height: 68%; }
+.team__avatar--open { color: var(--text-muted); background: transparent; border-style: dashed; }
+.team__photo { width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; }
+.team__body { min-width: 0; }
+.team__body h3 { font-size: var(--step-1); margin-bottom: var(--space-2xs); }
+.team__role {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--brand-purple);
+  margin-bottom: var(--space-sm);
+}
+.team__body p { margin-bottom: var(--space-md); }
+.team__card--open { background: transparent; border-style: dashed; border-color: rgba(26, 22, 80, 0.18); box-shadow: none; }
+.team__card--open:hover { border-color: rgba(91, 63, 224, 0.4); box-shadow: none; }
+
+/* .grid--2 / .grid--3 collapse is handled centrally in main.css. */
+@media (max-width: 29.99em) {
+  .team__card { grid-template-columns: 1fr; gap: var(--space-md); }
+}

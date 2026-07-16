@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mashal — AI is more than a chatbox</title>
+<meta name="description" content="Mashal brings practical AI literacy to Pakistani schools. The labs are already there — we bring the teaching that isn't.">
+<meta name="theme-color" content="#0D0B21">
+<meta property="og:title" content="Mashal — AI is more than a chatbox">
+<meta property="og:description" content="Practical AI literacy for Pakistani school students. The labs are already there — we bring the teaching that isn't.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/logo.png">
+<link rel="icon" href="assets/images/logo-transparent.png" type="image/png">
+
+<script>document.documentElement.classList.replace('no-js','js');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Nastaliq+Urdu:wght@400..700&display=swap">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav on-dark" id="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="index.html" aria-label="Mashal — home">
+      <span class="logo-disc"><img src="assets/images/logo-transparent.png" alt="" width="120" height="120"></span>
+      <span class="nav__wordmark">Mashal</span>
+    </a>
+    <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+      <span class="nav__toggle-box" aria-hidden="true">
+        <span class="nav__toggle-bar"></span><span class="nav__toggle-bar"></span><span class="nav__toggle-bar"></span>
+      </span>
+    </button>
+    <nav class="nav__menu" id="nav-menu" aria-label="Main">
+      <a class="nav__link" href="index.html" aria-current="page">Home</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero on-dark" id="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="container hero__inner">
+
+      <div class="hero__copy">
+        <p class="eyebrow hero-seq" data-seq="1">Practical AI literacy · Pakistan</p>
+        <h1 class="hero__title hero-seq" data-seq="2">
+          AI is more than<br>a <span class="hero__accent">chatbox</span>.
+        </h1>
+        <p class="hero__lede hero-seq" data-seq="3">
+          Your school already has the lab. Mashal brings the part that's missing —
+          teaching students to <strong>build</strong> with AI, not just chat with it.
+        </p>
+        <div class="hero__actions hero-seq" data-seq="4">
+          <a class="btn btn--primary" href="contact.html">Bring Mashal to your school</a>
+          <a class="btn btn--secondary" href="#what-we-do">See what we teach</a>
+        </div>
+        <ul class="hero__trust hero-seq" data-seq="5">
+          <li>Free for schools</li>
+          <li>Fits one period</li>
+          <li>Hands-on</li>
+        </ul>
+      </div>
+
+      <!-- Ring + logo + floating pills. The ring draws itself in on load; the
+           mark and pills then float gently so the page is never fully static. -->
+      <div class="hero__mark" id="hero-mark">
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#60A5FA"/>
+              <stop offset="100%" stop-color="#A78BFA"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring__track" cx="100" cy="100" r="95"/>
+          <circle class="ring__stroke" cx="100" cy="100" r="95" pathLength="1" stroke="url(#ring-gradient)"/>
+        </svg>
+
+        <span class="logo-disc hero__disc">
+          <img src="assets/images/logo-transparent.png"
+               alt="Mashal — the word مشعل in Urdu calligraphy inside a circular ring"
+               width="546" height="546" fetchpriority="high">
+        </span>
+
+        <span class="pill pill--1" aria-hidden="true">Build a real site</span>
+        <span class="pill pill--2" aria-hidden="true">Automate a task</span>
+        <span class="pill pill--3" aria-hidden="true">Find a career path</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== WHAT WE DO ===================== -->
+  <section class="section section--tint on-light" id="what-we-do">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Planned programmes</p>
+        <h2>Three sessions, built for a normal lab slot.</h2>
+        <p>Self-contained. Run one, or all three as a short series.</p>
+      </div>
+
+      <!-- The lit path: three stations along one gradient line that draws
+           itself in — the hero ring's stroke language, unrolled. Markers are
+           decorative (aria-hidden); the headings carry the structure. DOM
+           order is station-by-station so screen readers hear t1, t2, t3. -->
+      <div class="path reveal">
+        <svg class="path__line" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="path-gradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2B54A2"/>
+              <stop offset="100%" stop-color="#4F1675"/>
+            </linearGradient>
+          </defs>
+          <path class="path__track" vector-effect="non-scaling-stroke"
+                d="M 0 78 C 70 38, 130 38, 200 60 C 290 88, 310 88, 400 74 C 500 58, 520 40, 600 60 C 690 82, 710 82, 800 70 C 900 56, 920 36, 1000 60 C 1080 80, 1140 72, 1200 52"/>
+          <path class="path__stroke" vector-effect="non-scaling-stroke" pathLength="1" stroke="url(#path-gradient)"
+                d="M 0 78 C 70 38, 130 38, 200 60 C 290 88, 310 88, 400 74 C 500 58, 520 40, 600 60 C 690 82, 710 82, 800 70 C 900 56, 920 36, 1000 60 C 1080 80, 1140 72, 1200 52"/>
+        </svg>
+
+        <div class="path__text path__text--s1">
+          <h3>AI Beyond Chat</h3>
+          <p>An intro that resets what students think these tools are — and where a chatbox stops being the point.</p>
+        </div>
+        <span class="path__marker path__marker--s1" aria-hidden="true">
+          <img src="assets/icons/beyond-chat.svg" alt="" width="48" height="48">
+        </span>
+
+        <span class="path__marker path__marker--s2" aria-hidden="true">
+          <img src="assets/icons/build.svg" alt="" width="48" height="48">
+        </span>
+        <div class="path__text path__text--s2">
+          <h3>Build With AI</h3>
+          <p>Hands-on. Students leave having built something real: a working site, an automation, a mini-CRM.</p>
+        </div>
+
+        <div class="path__text path__text--s3">
+          <h3>AI for Careers</h3>
+          <p>Portfolios, résumés and career paths — using AI for what comes after school, not just tonight's homework.</p>
+        </div>
+        <span class="path__marker path__marker--s3" aria-hidden="true">
+          <img src="assets/icons/careers.svg" alt="" width="48" height="48">
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE GAP (short, split) ===================== -->
+  <section class="section section--white on-light" id="why">
+    <div class="container split">
+      <div class="split__copy reveal">
+        <p class="eyebrow">The gap</p>
+        <h2>The labs are already there. The teaching isn't.</h2>
+        <p>
+          These schools aren't short of resources — they're short of a curriculum.
+          The machines are bought, the students are curious, and nobody has shown
+          them what else these tools do.
+        </p>
+        <ul class="ticks">
+          <li>The hardware is already paid for</li>
+          <li>Students already use AI every day</li>
+          <li>Almost always for homework, and nothing else</li>
+          <li>That gap is only a few sessions wide</li>
+        </ul>
+      </div>
+
+      <!-- The two states this whole project is about moving between. A
+           structural device that encodes something true, not decoration. -->
+      <div class="split__visual reveal d1">
+        <div class="shift">
+          <div class="shift__row shift__row--from">
+            <span class="shift__label">Today</span>
+            <span class="shift__value">Students <em>use</em> AI</span>
+          </div>
+          <span class="shift__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 40" fill="none">
+              <path d="M12 2v34M4 28l8 8 8-8" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="shift__row shift__row--to">
+            <span class="shift__label">After a session</span>
+            <span class="shift__value">Students <em>build</em> with it</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="footer__brand" href="index.html" aria-label="Mashal — home">
+          <span class="logo-disc"><img src="assets/images/logo-transparent.png" alt="" width="120" height="120"></span>
+          <span class="footer__wordmark">Mashal</span>
+        </a>
+        <p class="footer__blurb">Practical AI literacy for students in Pakistani schools that already have the labs.</p>
+      </div>
+      <nav aria-label="Footer">
+        <h2 class="footer__heading">Site</h2>
+        <ul class="footer__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="footer__heading">Contact</h2>
+        <!-- Real contact links. -->
+        <div class="footer__social">
+          <a class="footer__social-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=contact.mashal.ai@gmail.com" target="_blank" rel="noopener" aria-label="Email Mashal (opens Gmail compose)" title="contact.mashal.ai@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="footer__social-btn" href="https://www.instagram.com/mashal_ai/" target="_blank" rel="noopener" aria-label="Mashal on Instagram" title="@mashal_ai">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.8" stroke="currentColor" stroke-width="1.7"/><circle cx="16.9" cy="7.1" r="1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__meaning">
+        <span class="urdu" lang="ur">مشعل</span> — Urdu for <em>torch</em>: something you carry to light the way.
+      </p>
+      <p>&copy; 2026 Mashal</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js" defer></script>
+<script src="js/scroll-reveal.js" defer></script>
+<script src="js/ring-animation.js" defer></script>
+</body>
+</html>

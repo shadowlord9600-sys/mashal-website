@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Build With AI: a browser window being assembled. -->
+  <defs>
+    <linearGradient id="g" x1="4" y1="44" x2="44" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F1675"/><stop offset="1" stop-color="#2B54A2"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#g)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="9" width="36" height="30" rx="3"/>
+    <path d="M6 17h36" opacity="0.55"/>
+    <circle cx="11" cy="13" r="1.1" fill="url(#g)" stroke="none"/>
+    <circle cx="15.5" cy="13" r="1.1" fill="url(#g)" stroke="none"/>
+    <path d="M19 30l-4-4 4-4"/>
+    <path d="M29 22l4 4-4 4"/>
+    <path d="M25.5 21l-3 10" opacity="0.7"/>
+  </g>
+</svg>

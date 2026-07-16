@@ -1,0 +1,121 @@
+/* ==========================================================================
+   Mashal — Contact
+   ========================================================================== */
+
+.contact {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 1rem + 4vw, 4rem);
+  align-items: start;
+}
+.contact > * { min-width: 0; }
+
+.contact__aside h2 { font-size: var(--step-3); margin-bottom: var(--space-md); }
+.contact__intro { color: var(--text-body); margin-bottom: var(--space-xl); }
+
+/* Direct email — the reliable path, given the form hands off to a mail client. */
+.contact__direct {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 1px solid rgba(26, 22, 80, 0.09);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  margin-bottom: var(--space-lg);
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+.contact__direct:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(91, 63, 224, 0.28);
+}
+.contact__direct-icon {
+  display: grid; place-items: center;
+  width: 3rem; height: 3rem;
+  flex: none;
+  background: var(--bg-tint);
+  border: 1px solid rgba(91, 63, 224, 0.12);
+  border-radius: var(--radius-md);
+}
+.contact__direct-icon img { width: 58%; height: 58%; }
+.contact__direct-body { display: grid; gap: 2px; min-width: 0; }
+.contact__direct-label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.contact__direct-value {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: var(--fw-semibold);
+  color: var(--brand-purple);
+  overflow-wrap: anywhere;
+}
+.contact__note-aside { font-size: var(--step--1); color: var(--text-muted); }
+
+/* ==========================================================================
+   Form — on a light surface
+   ========================================================================== */
+.form {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background: var(--surface);
+  border: 1px solid rgba(26, 22, 80, 0.09);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+.form__row { display: grid; gap: var(--space-xs); }
+.form__label { font-size: var(--step--1); font-weight: var(--fw-semibold); color: var(--text-ink); }
+.form__optional { color: var(--text-muted); font-weight: var(--fw-regular); }
+
+.form__input {
+  width: 100%;
+  padding: 0.75em 0.9em;
+  color: var(--text-ink);
+  background: var(--bg-tint);
+  border: 1px solid rgba(26, 22, 80, 0.14);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out);
+}
+.form__input::placeholder { color: var(--text-muted); }
+.form__input:hover { border-color: rgba(26, 22, 80, 0.28); }
+.form__input:focus {
+  background: var(--surface);
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 0 4px rgba(91, 63, 224, 0.12);
+}
+.form__input:focus-visible { outline-offset: 1px; }
+.form__textarea { resize: vertical; min-height: 7rem; font-family: var(--font-body); }
+
+.form__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%235A5480' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9em center;
+  background-size: 0.7rem;
+  padding-right: 2.4em;
+}
+
+.form__submit { margin-top: var(--space-xs); justify-self: start; }
+.form__note { font-size: var(--step--1); color: var(--text-muted); }
+/* Set by form.js once the mail client has been handed the message. */
+.form__note[data-state="sent"] { color: var(--brand-purple); font-weight: var(--fw-medium); }
+
+@media (max-width: 61.99em) {
+  .contact { grid-template-columns: 1fr; }
+}
+/* .grid--3 / .grid--2 collapse is handled centrally in main.css. */
+@media (max-width: 47.99em) {
+  .form { padding: var(--space-lg); }
+  .form__submit { justify-self: stretch; }
+}

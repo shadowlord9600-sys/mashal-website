@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- One standard period. -->
+  <defs>
+    <linearGradient id="g" x1="4" y1="44" x2="44" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F1675"/><stop offset="1" stop-color="#2B54A2"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#g)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="25" r="16"/>
+    <path d="M24 15v10l6.5 4"/>
+    <path d="M18 6h12" opacity="0.6"/>
+  </g>
+</svg>

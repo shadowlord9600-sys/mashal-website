@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- AI for Careers: a rising path — the logo's growth gesture, abstracted. -->
+  <defs>
+    <linearGradient id="g" x1="4" y1="44" x2="44" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F1675"/><stop offset="1" stop-color="#2B54A2"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#g)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 40h34" opacity="0.5"/>
+    <path d="M9 33c6.5 0 9.5-4 12.5-10.5S29 11 39 10"/>
+    <path d="M32.5 9.2 39.5 9.6l.4 7"/>
+    <circle cx="21.5" cy="22.5" r="2.4" opacity="0.75"/>
+  </g>
+</svg>

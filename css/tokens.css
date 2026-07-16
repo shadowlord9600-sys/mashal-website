@@ -1,0 +1,177 @@
+/* ==========================================================================
+   Mashal — Design Tokens
+   Single source of truth for colour, type and spacing. Nothing else in the
+   codebase should hard-code a hex value or a raw px type size.
+
+   COLOUR NOTES (read before changing anything here)
+   -------------------------------------------------
+   DESIGN.md asks that accents be sampled from the logo ring rather than an
+   arbitrary purple/blue pair, and that contrast be verified against WCAG AA.
+   Both were done. The ring's true ink, sampled from assets/images/logo.png:
+
+       blue arc (top/right) ...... #2B54A2
+       purple arc (bottom/left) .. #4F1675
+
+   Those are ink-on-paper colours. Measured against the dark section
+   background (#0D0B21) they come out at 2.66:1 and 1.57:1 — far under AA.
+   DESIGN.md's electric violet (#5B3FE0) also lands at 2.97:1 on dark.
+
+   So the palette is split by CONTEXT rather than flattened to one pair:
+
+     --brand-*      true logo ink. Light backgrounds and large graphics only.
+     --accent-*     DESIGN.md's palette. Fills, where white text sits on top
+                    (white on #5B3FE0 = 6.50:1, passes).
+     --*-on-dark    the same hues lifted for dark backgrounds. Anything that
+                    must be READ on #0D0B21 uses these (all >= 7:1).
+
+   The hue story (blue -> violet, taken from the ring) is identical across all
+   three; only the lightness changes to suit the background.
+   ========================================================================== */
+
+:root {
+  /* ---- Backgrounds (DESIGN.md palette table) ---------------------------- */
+  --bg-dark: #0D0B21;          /* deep indigo-black — hero + footer only     */
+  --bg-dark-2: #1A1650;        /* deep blue-purple — gradient base           */
+  --bg-light: #F5F4FF;         /* violet-tinted white — tinted sections      */
+  --surface: #FFFFFF;          /* cards / contrast surfaces                  */
+
+  /* Section rhythm: the page runs dark hero -> light body -> gradient CTA
+     band -> dark footer. Earlier the page flipped dark/light six times, which
+     read as noise; the body now stays light and only alternates white/tint. */
+  --bg-body: #FFFFFF;
+  --bg-tint: #F5F4FF;
+
+  /* ---- Brand: true ink sampled from the logo ring ----------------------- */
+  /* Use on LIGHT backgrounds or as large graphics. Never as text on dark.   */
+  --brand-blue: #2B54A2;
+  --brand-purple: #4F1675;
+  --brand-gradient: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+
+  /* ---- Accents: DESIGN.md palette. Fills with white text on top. -------- */
+  --accent-violet: #5B3FE0;    /* primary accent                             */
+  --accent-blue: #3B82F6;      /* secondary accent                           */
+
+  /* ---- On-dark tints: same hues, lifted to pass AA on --bg-dark --------- */
+  --violet-on-dark: #A78BFA;   /*  7.10:1 on --bg-dark                       */
+  --violet-on-dark-soft: #C4B5FD; /* 10.47:1                                 */
+  --blue-on-dark: #60A5FA;     /*  7.60:1                                    */
+  --cyan-on-dark: #7DD3FC;     /* 11.59:1 — focus ring on dark               */
+
+  /* ---- Text ------------------------------------------------------------- */
+  --text-ink: #1A1650;         /* headings on light — 15.12:1 on --bg-light  */
+  --text-body: #3F3A63;        /* body on light      —  9.65:1               */
+  --text-muted: #5A5480;       /* meta on light      —  6.39:1               */
+  --text-on-dark: #FFFFFF;     /* headings on dark   — 19.32:1               */
+  --text-on-dark-soft: #CFC9F0;/* body on dark       — 12.20:1               */
+  --text-on-dark-muted: #A9A3CC;/* meta on dark      —  8.09:1               */
+
+  /* ---- Gradients -------------------------------------------------------- */
+  /* CTA fill: logo blue -> DESIGN.md violet. Worst stop vs white = 6.50:1.  */
+  --cta-gradient: linear-gradient(135deg, #2B54A2, #5B3FE0);
+  --cta-gradient-hover: linear-gradient(135deg, #3460B4, #6B4EEC);
+  /* Ring on dark: lifted logo hues. Worst stop vs --bg-dark = 7.09:1.       */
+  --ring-gradient-from: #60A5FA;
+  --ring-gradient-to: #A78BFA;
+
+  /* ---- Focus ring — context-scoped ------------------------------------- */
+  /* One global focus colour cannot work: --cyan-on-dark is 11.59:1 on dark  */
+  /* but only 1.53:1 on --bg-light. Sections re-declare --focus below.       */
+  --focus: var(--accent-violet);     /* default = light-background context   */
+  --focus-width: 3px;
+  --focus-offset: 3px;
+
+  /* ---- Type faces ------------------------------------------------------- */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+
+  /* ---- Type scale — fluid, 320px -> 1280px viewport --------------------- */
+  --step--1: clamp(0.83rem, 0.79rem + 0.18vw, 0.94rem);
+  --step-0:  clamp(1rem, 0.95rem + 0.24vw, 1.13rem);
+  --step-1:  clamp(1.2rem, 1.11rem + 0.44vw, 1.5rem);
+  --step-2:  clamp(1.44rem, 1.28rem + 0.79vw, 2rem);
+  --step-3:  clamp(1.73rem, 1.46rem + 1.34vw, 2.66rem);
+  --step-4:  clamp(2.07rem, 1.64rem + 2.15vw, 3.55rem);
+  --step-5:  clamp(2.49rem, 1.8rem + 3.45vw, 4.74rem);
+
+  /* ---- Type weights / spacing ------------------------------------------ */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --lh-tight: 1.08;
+  --lh-snug: 1.25;
+  --lh-body: 1.65;
+  --tracking-tight: -0.022em;
+  --tracking-normal: 0;
+  --tracking-label: 0.14em;
+
+  /* ---- Spacing scale ---------------------------------------------------- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  /* Generous section rhythm, per DESIGN.md's whitespace rule. */
+  --space-section: clamp(4.5rem, 3rem + 7.5vw, 9rem);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --container: 68rem;
+  --container-narrow: 46rem;   /* single-column prose (Why Mashal, Story)    */
+  --gutter: clamp(1.25rem, 0.9rem + 1.7vw, 2.5rem);
+  --nav-height: 4.5rem;
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-pill: 999px;
+
+  /* ---- Elevation -------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(13, 11, 33, 0.06), 0 2px 8px rgba(13, 11, 33, 0.04);
+  --shadow-md: 0 4px 12px rgba(13, 11, 33, 0.08), 0 12px 32px rgba(13, 11, 33, 0.06);
+  --shadow-lg: 0 12px 32px rgba(13, 11, 33, 0.12), 0 28px 64px rgba(13, 11, 33, 0.10);
+  --glow-violet: 0 0 0 1px rgba(167, 139, 250, 0.28), 0 8px 40px rgba(91, 63, 224, 0.30);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  /* No bounce / elastic easing anywhere — DESIGN.md motion rule.            */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-base: 260ms;
+  --dur-slow: 520ms;
+  --dur-reveal: 620ms;
+  --dur-ring: 1500ms;   /* hero ring stroke-draw                             */
+
+  /* ---- Z-index ---------------------------------------------------------- */
+  --z-nav: 100;
+  --z-menu: 90;
+  --z-skip: 200;
+}
+
+/* Sections that sit on a dark background flip the readable-text and focus
+   tokens. Any component nested inside inherits the correct pair automatically,
+   which is what keeps contrast correct without per-component overrides. */
+.on-dark {
+  --text-heading: var(--text-on-dark);
+  --text-copy: var(--text-on-dark-soft);
+  --text-meta: var(--text-on-dark-muted);
+  --accent-readable: var(--violet-on-dark);
+  --focus: var(--cyan-on-dark);      /* 11.59:1 on --bg-dark                 */
+  --rule: rgba(207, 201, 240, 0.16);
+}
+
+.on-light {
+  --text-heading: var(--text-ink);
+  --text-copy: var(--text-body);
+  --text-meta: var(--text-muted);
+  --accent-readable: var(--brand-purple);  /* 11.31:1 on --bg-light          */
+  --focus: var(--accent-violet);           /*  6.50:1 on --bg-light          */
+  --rule: rgba(26, 22, 80, 0.12);
+}
