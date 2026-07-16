@@ -88,17 +88,24 @@
         </a>
       </div>
 
-      <!-- Static form. No backend (CONTEXT.md non-goal), so submitting opens a
-           Gmail compose tab with To/Subject/Body pre-filled (form.js). The
-           mailto action below is only the no-JS fallback.
-           To move to a hosted handler later: point action at the Formspree
-           endpoint and delete data-mailto — form.js then stands down and the
-           browser performs a normal POST. -->
+      <!-- Delivered via FormSubmit (formsubmit.co): submissions arrive in the
+           Mashal inbox directly — the visitor never leaves the page. form.js
+           submits over AJAX for the inline confirmation; without JS the form
+           still works as a plain POST to the same service.
+           NOTE: delivery starts after the one-time "Activate" email FormSubmit
+           sends to the address on first submission. -->
       <form class="form reveal d1" id="contact-form"
-            data-mailto="contact.mashal.ai@gmail.com"
-            action="mailto:contact.mashal.ai@gmail.com"
-            method="post"
-            enctype="text/plain">
+            action="https://formsubmit.co/contact.mashal.ai@gmail.com"
+            method="post">
+        <!-- FormSubmit config: email subject/format, no captcha interstitial
+             for the no-JS path, and a honeypot field bots fill but people
+             never see (submissions with it filled are dropped). -->
+        <input type="hidden" name="_subject" value="New message from the Mashal website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off"
+               style="display:none" aria-hidden="true">
+
         <div class="form__row">
           <label class="form__label" for="f-name">Your name</label>
           <input class="form__input" type="text" id="f-name" name="name" autocomplete="name" required>
@@ -131,7 +138,7 @@
         </div>
 
         <button class="btn btn--primary form__submit" type="submit">Send message</button>
-        <p class="form__note" id="form-note">This opens Gmail with the message ready to send.</p>
+        <p class="form__note" id="form-note">Goes straight to the Mashal inbox. We reply to the email you enter.</p>
       </form>
 
     </div>

@@ -1,75 +1,87 @@
-/* Static contact form.
-   There is no backend (CONTEXT.md non-goal), so the form composes a pre-filled
-   message in the visitor's own mail client via a mailto: URL.
+/* Contact form — delivers straight to the Mashal inbox via FormSubmit.
+   (formsubmit.co: free static-form service, no account; delivery begins after
+   the one-time "Activate" email it sends to the address.)
 
-   Migration path: point the form's action at a Formspree (or similar) endpoint
-   and delete the data-mailto attribute. This script then does nothing and the
-   browser performs a normal POST. */
+   With JS: submit over AJAX so the visitor stays on the page and gets an
+   inline confirmation. Without JS: the browser performs a normal POST to the
+   same service, which shows its own thank-you page. Either way the message
+   lands in the inbox — nothing here depends on the visitor's mail setup. */
 (function () {
   'use strict';
 
   var form = document.getElementById('contact-form');
   if (!form) return;
 
-  var to = form.getAttribute('data-mailto');
-  if (!to) return; // a real endpoint is configured — leave the form alone
+  var action = form.getAttribute('action') || '';
+  // Only take over for FormSubmit + fetch-capable browsers; otherwise the
+  // native POST handles everything on its own.
+  if (!window.fetch || action.indexOf('formsubmit.co') === -1) return;
+
+  var AJAX_ENDPOINT = action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
 
   var note = document.getElementById('form-note');
+  var button = form.querySelector('.form__submit');
   var defaultNote = note ? note.textContent : '';
+  var buttonLabel = button ? button.textContent : '';
+
+  function setNote(text, state) {
+    if (!note) return;
+    note.textContent = text;
+    if (state) note.setAttribute('data-state', state);
+    else note.removeAttribute('data-state');
+  }
 
   form.addEventListener('submit', function (e) {
-    // Let the browser show its own validation UI first.
+    // Let the browser paint its own validation UI first.
     if (!form.checkValidity()) return;
-
     e.preventDefault();
 
     var data = new FormData(form);
     var val = function (k) { return String(data.get(k) || '').trim(); };
 
+    // Honeypot: humans never see the field, bots fill it. Pretend success.
+    if (val('_honey')) { form.reset(); setNote('Thanks — your message is on its way.', 'sent'); return; }
+
     var role = val('role');
     var org = val('organisation');
+    var payload = {
+      name: val('name'),
+      email: val('email'),           // FormSubmit uses this as the reply-to
+      role: role,
+      organisation: org,
+      message: val('message'),
+      _subject: role === 'School'
+        ? 'Mashal session request' + (org ? ' — ' + org : '')
+        : 'Mashal website — ' + (role || 'enquiry'),
+      _template: 'table'
+    };
 
-    var subject = role === 'School'
-      ? 'Mashal session request' + (org ? ' — ' + org : '')
-      : 'Mashal — ' + (role || 'enquiry');
+    button.disabled = true;
+    button.textContent = 'Sending…';
 
-    var body = [
-      'Name: ' + val('name'),
-      'Email: ' + val('email'),
-      'Writing as: ' + role,
-      org ? 'School / organisation: ' + org : null,
-      '',
-      val('message')
-    ].filter(function (line) { return line !== null; }).join('\n');
-
-    /* Gmail's compose URL rather than mailto: — mailto depends on the
-       visitor's OS having a default mail app and fails SILENTLY when there
-       isn't one. Gmail compose always opens a page with To/Subject/Body
-       pre-filled (after sign-in if needed), which matches this audience.
-       The form's own action stays mailto: as the no-JS fallback. */
-    var href = 'https://mail.google.com/mail/?view=cm&fs=1' +
-      '&to=' + encodeURIComponent(to) +
-      '&su=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
-
-    var win = window.open(href, '_blank', 'noopener');
-
-    /* Belt and braces: also copy the composed message, so even a popup
-       blocker can't leave the visitor with nothing. */
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText('To: ' + to + '\nSubject: ' + subject + '\n\n' + body)
-        .catch(function () { /* clipboard denied — the note still names the address */ });
-    }
-
-    if (note) {
-      note.textContent = win
-        ? 'Opening Gmail with your message ready to send…'
-        : 'Your browser blocked the Gmail tab — your message was copied instead. Paste it into any email to ' + to + '.';
-      note.setAttribute('data-state', 'sent');
-      window.setTimeout(function () {
-        note.textContent = defaultNote;
-        note.removeAttribute('data-state');
-      }, 12000);
-    }
+    fetch(AJAX_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json().then(function (json) { return { ok: res.ok, json: json }; });
+      })
+      .then(function (r) {
+        var success = r.ok && (r.json.success === true || r.json.success === 'true');
+        if (!success) throw new Error(r.json.message || 'send failed');
+        form.reset();
+        setNote('Sent — your message is in our inbox. We’ll reply to the email you entered.', 'sent');
+      })
+      .catch(function () {
+        setNote('Couldn’t send just now — please email contact.mashal.ai@gmail.com directly.', null);
+      })
+      .then(function () {
+        button.disabled = false;
+        button.textContent = buttonLabel;
+        window.setTimeout(function () {
+          if (note && note.getAttribute('data-state') === 'sent') setNote(defaultNote, null);
+        }, 12000);
+      });
   });
 })();
