@@ -127,15 +127,24 @@
               </span>
               <span class="deck-card__title">A working website</span>
             </div>
-            <!-- A miniature landing page inside browser chrome. -->
+            <!-- A miniature landing page inside browser chrome: nav, a hero
+                 with a headline + button, and a row of feature tiles. -->
             <div class="deck-card__viz mock mock--site">
               <div class="mock__bar"><i></i><i></i><i></i></div>
               <div class="mock__page">
-                <span class="mock__hero"></span>
-                <span class="mock__h"></span>
-                <span class="mock__t"></span>
-                <span class="mock__t mock__t--s"></span>
-                <span class="mock__btn"></span>
+                <div class="mock__nav">
+                  <span class="mock__logo"></span>
+                  <b></b><b></b><b class="is-cta"></b>
+                </div>
+                <div class="mock__hero">
+                  <span class="mock__hero-t"></span>
+                  <span class="mock__hero-btn"></span>
+                </div>
+                <div class="mock__tiles">
+                  <span class="mock__tile"></span>
+                  <span class="mock__tile"></span>
+                  <span class="mock__tile"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -170,12 +179,18 @@
               </span>
               <span class="deck-card__title">A mini-CRM</span>
             </div>
-            <!-- A tiny contacts table: avatar, name, status pill per row. -->
+            <!-- A tiny contacts table: header, then avatar + name + status
+                 pill per row, with varied avatar colours. -->
             <div class="deck-card__viz mock mock--table">
-              <span class="trow trow--head"><b></b><b></b><b></b></span>
-              <span class="trow"><i class="ava"></i><span class="nm"></span><span class="pill pill--go"></span></span>
-              <span class="trow"><i class="ava"></i><span class="nm nm--s"></span><span class="pill pill--wait"></span></span>
-              <span class="trow"><i class="ava"></i><span class="nm"></span><span class="pill pill--go"></span></span>
+              <span class="thead">
+                <span class="thead__ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M17.5 19c0-2.3-1-4-2.6-4.6"/></svg>
+                </span>
+                <b class="thead__title"></b>
+              </span>
+              <span class="trow"><i class="ava ava--1"></i><span class="nm"></span><span class="pill pill--go"></span></span>
+              <span class="trow"><i class="ava ava--2"></i><span class="nm nm--s"></span><span class="pill pill--wait"></span></span>
+              <span class="trow"><i class="ava ava--3"></i><span class="nm"></span><span class="pill pill--go"></span></span>
             </div>
           </div>
         </div>

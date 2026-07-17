@@ -145,15 +145,37 @@
   border-bottom: 1px solid rgba(26, 22, 80, 0.1);
 }
 .mock__bar i { width: 0.42rem; height: 0.42rem; border-radius: 50%; background: rgba(26, 22, 80, 0.22); }
-.mock__page { display: grid; gap: 0.5rem; padding: 0.85rem; }
+.mock__page { display: grid; gap: 0.6rem; padding: 0.75rem; }
+/* nav: brand square + two links + a filled CTA pill */
+.mock__nav { display: flex; align-items: center; gap: 0.4rem; }
+.mock__logo { width: 1rem; height: 1rem; border-radius: 0.28rem; background: var(--cta-gradient); }
+.mock__nav b { height: 0.42rem; width: 1.6rem; border-radius: 0.2rem; background: rgba(26, 22, 80, 0.22); }
+.mock__nav b.is-cta { width: 1.9rem; height: 0.75rem; margin-left: auto; border-radius: var(--radius-pill); background: var(--cta-gradient); }
+/* hero: gradient band with a white headline + white button inside */
 .mock__hero {
-  height: 2.6rem; border-radius: 0.4rem;
+  position: relative;
+  height: 2.9rem; border-radius: 0.45rem;
+  padding: 0.5rem 0.6rem;
+  display: grid; align-content: center; gap: 0.35rem;
   background: linear-gradient(120deg, var(--brand-blue), var(--brand-purple));
 }
-.mock__h { height: 0.7rem; width: 55%; border-radius: 0.25rem; background: rgba(26, 22, 80, 0.4); }
-.mock__t { height: 0.5rem; width: 92%; border-radius: 0.25rem; background: rgba(26, 22, 80, 0.14); }
-.mock__t--s { width: 68%; }
-.mock__btn { height: 1.1rem; width: 4.5rem; margin-top: 0.15rem; border-radius: var(--radius-pill); background: var(--cta-gradient); }
+.mock__hero-t { height: 0.45rem; width: 62%; border-radius: 0.2rem; background: rgba(255, 255, 255, 0.9); }
+.mock__hero-btn { height: 0.7rem; width: 2.2rem; border-radius: var(--radius-pill); background: rgba(255, 255, 255, 0.85); }
+/* three feature tiles, each with a coloured cap */
+.mock__tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+.mock__tile {
+  height: 1.7rem; border-radius: 0.35rem;
+  background: var(--bg-tint);
+  border: 1px solid rgba(26, 22, 80, 0.08);
+  position: relative;
+}
+.mock__tile::before {
+  content: ""; position: absolute; inset: 0.3rem auto auto 0.3rem;
+  width: 0.6rem; height: 0.6rem; border-radius: 0.18rem;
+}
+.mock__tile:nth-child(1)::before { background: var(--brand-blue); }
+.mock__tile:nth-child(2)::before { background: var(--accent-violet); }
+.mock__tile:nth-child(3)::before { background: var(--brand-purple); }
 
 /* Automation: three nodes joined by arrows, the last one lit. */
 .mock--flow {
@@ -201,18 +223,25 @@
   border: 1px solid rgba(26, 22, 80, 0.12);
   border-radius: 0.6rem;
 }
+/* header: an icon tile + a title bar, like the automation card's chips */
+.thead { display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.55rem; border-bottom: 1px solid rgba(26, 22, 80, 0.1); }
+.thead__ico {
+  display: grid; place-items: center;
+  width: 1.5rem; height: 1.5rem; flex: none;
+  color: #FFFFFF; background: var(--cta-gradient); border-radius: 0.35rem;
+}
+.thead__ico svg { width: 62%; height: 62%; }
+.thead__title { height: 0.5rem; width: 3.2rem; border-radius: 0.22rem; background: rgba(26, 22, 80, 0.32); }
 .trow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.55rem; }
-.trow--head { padding-bottom: 0.4rem; border-bottom: 1px solid rgba(26, 22, 80, 0.1); }
-.trow--head b { height: 0.42rem; border-radius: 0.2rem; background: rgba(26, 22, 80, 0.28); }
-.trow--head b:nth-child(1) { width: 1.4rem; }
-.trow--head b:nth-child(2) { width: 3rem; }
-.trow--head b:nth-child(3) { width: 1.8rem; justify-self: end; }
-.ava { width: 1.3rem; height: 1.3rem; border-radius: 50%; background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple)); }
+.ava { width: 1.4rem; height: 1.4rem; border-radius: 50%; flex: none; }
+.ava--1 { background: linear-gradient(135deg, #60A5FA, #2B54A2); }
+.ava--2 { background: linear-gradient(135deg, #A78BFA, #5B3FE0); }
+.ava--3 { background: linear-gradient(135deg, #4F1675, #8B5CF6); }
 .nm { height: 0.5rem; width: 100%; border-radius: 0.25rem; background: rgba(26, 22, 80, 0.16); }
 .nm--s { width: 70%; }
-.pill { width: 2.4rem; height: 0.85rem; border-radius: var(--radius-pill); }
-.pill--go { background: rgba(43, 130, 100, 0.9); }
-.pill--wait { background: rgba(214, 158, 46, 0.9); }
+.pill { width: 2.6rem; height: 0.9rem; border-radius: var(--radius-pill); }
+.pill--go { background: rgba(34, 150, 94, 0.95); }
+.pill--wait { background: rgba(214, 158, 46, 0.95); }
 
 /* ---- The shuffle (JS present + hero started only) ------------------------ */
 /* One 12s cycle; each card holds a slot ~a third of it, then glides on.
