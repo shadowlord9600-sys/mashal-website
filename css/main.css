@@ -106,16 +106,8 @@ a { color: inherit; }
   color: var(--text-meta, var(--text-muted));
   margin-bottom: var(--space-md);
 }
-.eyebrow::before {
-  content: "";
-  width: 1.5rem; height: 2px;
-  border-radius: 2px;
-  background: var(--brand-gradient);
-  flex: none;
-}
-.on-dark .eyebrow::before {
-  background: linear-gradient(90deg, var(--ring-gradient-from), var(--ring-gradient-to));
-}
+/* (The leading gradient bar before eyebrow labels was removed at the owner's
+   request — it read as a stray dash before every heading.) */
 
 /* ---- Buttons ----------------------------------------------------------- */
 .btn {

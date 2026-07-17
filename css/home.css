@@ -81,7 +81,7 @@
    only runs once the hero says go.
    ========================================================================== */
 .hero__visual {
-  width: min(100%, 30rem);
+  width: min(100%, 34rem);
   margin-inline: auto;
 }
 .deck {
@@ -91,7 +91,7 @@
 }
 .deck-card {
   grid-area: 1 / 1;                       /* all three share one cell */
-  width: min(100%, 24rem);
+  width: min(100%, 27.5rem);
   justify-self: center;
   background: linear-gradient(165deg, #FFFFFF, var(--bg-tint));
   border: 1px solid rgba(207, 201, 240, 0.35);
@@ -145,37 +145,53 @@
   border-bottom: 1px solid rgba(26, 22, 80, 0.1);
 }
 .mock__bar i { width: 0.42rem; height: 0.42rem; border-radius: 50%; background: rgba(26, 22, 80, 0.22); }
+.mock__url {
+  margin-left: 0.4rem; padding: 0.1rem 0.5rem;
+  font-size: 0.6rem; color: var(--text-muted);
+  background: #FFFFFF; border-radius: var(--radius-pill);
+}
 .mock__page { display: grid; gap: 0.6rem; padding: 0.75rem; }
-/* nav: brand square + two links + a filled CTA pill */
-.mock__nav { display: flex; align-items: center; gap: 0.4rem; }
-.mock__logo { width: 1rem; height: 1rem; border-radius: 0.28rem; background: var(--cta-gradient); }
-.mock__nav b { height: 0.42rem; width: 1.6rem; border-radius: 0.2rem; background: rgba(26, 22, 80, 0.22); }
-.mock__nav b.is-cta { width: 1.9rem; height: 0.75rem; margin-left: auto; border-radius: var(--radius-pill); background: var(--cta-gradient); }
-/* hero: gradient band with a white headline + white button inside */
+/* nav: brand square + real link labels + a filled CTA pill */
+.mock__nav { display: flex; align-items: center; gap: 0.55rem; }
+.mock__logo { width: 1.05rem; height: 1.05rem; border-radius: 0.28rem; background: var(--cta-gradient); flex: none; }
+.mock__navtxt { font-size: 0.62rem; font-weight: var(--fw-medium); color: var(--text-body); }
+.mock__cta {
+  margin-left: auto;
+  font-size: 0.6rem; font-weight: var(--fw-semibold); color: #FFFFFF;
+  padding: 0.12rem 0.55rem; border-radius: var(--radius-pill);
+  background: var(--cta-gradient);
+}
+/* hero: gradient band with a real white headline + button inside */
 .mock__hero {
   position: relative;
-  height: 2.9rem; border-radius: 0.45rem;
-  padding: 0.5rem 0.6rem;
-  display: grid; align-content: center; gap: 0.35rem;
+  border-radius: 0.45rem;
+  padding: 0.7rem 0.7rem;
+  display: grid; justify-items: start; gap: 0.4rem;
   background: linear-gradient(120deg, var(--brand-blue), var(--brand-purple));
 }
-.mock__hero-t { height: 0.45rem; width: 62%; border-radius: 0.2rem; background: rgba(255, 255, 255, 0.9); }
-.mock__hero-btn { height: 0.7rem; width: 2.2rem; border-radius: var(--radius-pill); background: rgba(255, 255, 255, 0.85); }
-/* three feature tiles, each with a coloured cap */
-.mock__tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+.mock__hero-title {
+  font-family: var(--font-display);
+  font-size: 0.82rem; font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight); color: #FFFFFF;
+}
+.mock__hero-sub { height: 0.4rem; width: 70%; border-radius: 0.2rem; background: rgba(255, 255, 255, 0.55); }
+.mock__hero-btn {
+  margin-top: 0.1rem;
+  font-size: 0.6rem; font-weight: var(--fw-semibold); color: var(--brand-purple);
+  padding: 0.16rem 0.6rem; border-radius: var(--radius-pill);
+  background: #FFFFFF;
+}
+/* three product tiles, each with a coloured chip + real label */
+.mock__tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
 .mock__tile {
-  height: 1.7rem; border-radius: 0.35rem;
+  display: grid; justify-items: center; gap: 0.3rem;
+  padding: 0.5rem 0.3rem;
+  font-size: 0.58rem; font-weight: var(--fw-medium); color: var(--text-body);
   background: var(--bg-tint);
   border: 1px solid rgba(26, 22, 80, 0.08);
-  position: relative;
+  border-radius: 0.35rem;
 }
-.mock__tile::before {
-  content: ""; position: absolute; inset: 0.3rem auto auto 0.3rem;
-  width: 0.6rem; height: 0.6rem; border-radius: 0.18rem;
-}
-.mock__tile:nth-child(1)::before { background: var(--brand-blue); }
-.mock__tile:nth-child(2)::before { background: var(--accent-violet); }
-.mock__tile:nth-child(3)::before { background: var(--brand-purple); }
+.mock__tile em { width: 0.85rem; height: 0.85rem; border-radius: 0.22rem; }
 
 /* Automation: three nodes joined by arrows, the last one lit. */
 .mock--flow {
@@ -223,25 +239,45 @@
   border: 1px solid rgba(26, 22, 80, 0.12);
   border-radius: 0.6rem;
 }
-/* header: an icon tile + a title bar, like the automation card's chips */
-.thead { display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.55rem; border-bottom: 1px solid rgba(26, 22, 80, 0.1); }
+/* header: icon tile + real title + a "+ New" action */
+.thead { display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(26, 22, 80, 0.1); }
 .thead__ico {
   display: grid; place-items: center;
   width: 1.5rem; height: 1.5rem; flex: none;
   color: #FFFFFF; background: var(--cta-gradient); border-radius: 0.35rem;
 }
 .thead__ico svg { width: 62%; height: 62%; }
-.thead__title { height: 0.5rem; width: 3.2rem; border-radius: 0.22rem; background: rgba(26, 22, 80, 0.32); }
+.thead__title { font-family: var(--font-display); font-size: 0.78rem; font-weight: var(--fw-bold); color: var(--text-ink); }
+.thead__add {
+  margin-left: auto;
+  font-size: 0.58rem; font-weight: var(--fw-semibold); color: var(--brand-purple);
+  padding: 0.12rem 0.45rem; border-radius: var(--radius-pill);
+  background: rgba(91, 63, 224, 0.1);
+}
+/* column labels */
+.tcols { display: grid; grid-template-columns: auto 1fr auto; gap: 0.55rem; }
+.tcols span {
+  font-size: 0.55rem; font-weight: var(--fw-semibold); letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.tcols span:first-child { grid-column: 1 / 3; }
 .trow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.55rem; }
-.ava { width: 1.4rem; height: 1.4rem; border-radius: 50%; flex: none; }
+.ava {
+  display: grid; place-items: center;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%; flex: none;
+  font-size: 0.62rem; font-weight: var(--fw-bold); color: #FFFFFF;
+  font-family: var(--font-display);
+}
 .ava--1 { background: linear-gradient(135deg, #60A5FA, #2B54A2); }
 .ava--2 { background: linear-gradient(135deg, #A78BFA, #5B3FE0); }
 .ava--3 { background: linear-gradient(135deg, #4F1675, #8B5CF6); }
-.nm { height: 0.5rem; width: 100%; border-radius: 0.25rem; background: rgba(26, 22, 80, 0.16); }
-.nm--s { width: 70%; }
-.pill { width: 2.6rem; height: 0.9rem; border-radius: var(--radius-pill); }
+.nm { font-size: 0.68rem; font-weight: var(--fw-medium); color: var(--text-ink); }
+.pill {
+  font-size: 0.55rem; font-weight: var(--fw-semibold); color: #FFFFFF;
+  padding: 0.12rem 0.5rem; border-radius: var(--radius-pill);
+}
 .pill--go { background: rgba(34, 150, 94, 0.95); }
-.pill--wait { background: rgba(214, 158, 46, 0.95); }
+.pill--wait { background: rgba(214, 158, 46, 0.98); }
 
 /* ---- The shuffle (JS present + hero started only) ------------------------ */
 /* One 12s cycle; each card holds a slot ~a third of it, then glides on.
