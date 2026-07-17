@@ -81,22 +81,22 @@
    only runs once the hero says go.
    ========================================================================== */
 .hero__visual {
-  width: min(100%, 24rem);
+  width: min(100%, 30rem);
   margin-inline: auto;
 }
 .deck {
   display: grid;
-  padding-block: var(--space-lg);        /* room for the fan's spread */
-  filter: drop-shadow(0 24px 60px rgba(13, 11, 33, 0.55));
+  padding-block: var(--space-xl);        /* room for the fan's spread */
+  filter: drop-shadow(0 26px 64px rgba(13, 11, 33, 0.55));
 }
 .deck-card {
   grid-area: 1 / 1;                       /* all three share one cell */
-  width: min(100%, 19rem);
+  width: min(100%, 24rem);
   justify-self: center;
   background: linear-gradient(165deg, #FFFFFF, var(--bg-tint));
   border: 1px solid rgba(207, 201, 240, 0.35);
   border-radius: var(--radius-lg);
-  padding: var(--space-lg);
+  padding: var(--space-xl);
   will-change: transform, opacity;
 }
 
@@ -123,39 +123,96 @@
 .deck-card__title {
   font-family: var(--font-display);
   font-weight: var(--fw-semibold);
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   letter-spacing: var(--tracking-tight);
   color: var(--text-ink);
 }
 
-/* Mini skeleton visualisations — different shape per card. */
-.deck-card__viz { display: grid; gap: 0.55rem; }
-.dz { border-radius: 0.35rem; background: rgba(26, 22, 80, 0.1); }
-.dz--head { height: 1.1rem; width: 70%; background: linear-gradient(90deg, rgba(43, 84, 162, 0.7), rgba(91, 63, 224, 0.6)); }
-.dz--line { height: 0.55rem; width: 94%; }
-.dz--row  { height: 0.8rem;  width: 100%; }
-.dz--short { width: 62%; }
-.dz--btn {
-  height: 1.6rem; width: 6.5rem;
-  margin-top: 0.2rem;
-  border-radius: var(--radius-pill);
-  background: var(--cta-gradient);
+/* ---- Card visualisations: each reads as the thing it's named ------------- */
+.deck-card__viz { min-height: 7.5rem; }
+
+/* Website: a landing page inside browser chrome. */
+.mock--site {
+  border: 1px solid rgba(26, 22, 80, 0.12);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background: #FFFFFF;
 }
-.deck-card__viz--flow {
-  grid-auto-flow: column;
+.mock__bar {
+  display: flex; align-items: center; gap: 0.35rem;
+  padding: 0.45rem 0.6rem;
+  background: var(--bg-tint);
+  border-bottom: 1px solid rgba(26, 22, 80, 0.1);
+}
+.mock__bar i { width: 0.42rem; height: 0.42rem; border-radius: 50%; background: rgba(26, 22, 80, 0.22); }
+.mock__page { display: grid; gap: 0.5rem; padding: 0.85rem; }
+.mock__hero {
+  height: 2.6rem; border-radius: 0.4rem;
+  background: linear-gradient(120deg, var(--brand-blue), var(--brand-purple));
+}
+.mock__h { height: 0.7rem; width: 55%; border-radius: 0.25rem; background: rgba(26, 22, 80, 0.4); }
+.mock__t { height: 0.5rem; width: 92%; border-radius: 0.25rem; background: rgba(26, 22, 80, 0.14); }
+.mock__t--s { width: 68%; }
+.mock__btn { height: 1.1rem; width: 4.5rem; margin-top: 0.15rem; border-radius: var(--radius-pill); background: var(--cta-gradient); }
+
+/* Automation: three nodes joined by arrows, the last one lit. */
+.mock--flow {
+  display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   gap: 0;
-  padding-block: 0.55rem;
 }
-.dz-node {
-  width: 1.1rem; height: 1.1rem;
-  border-radius: 50%;
-  border: 2px solid var(--brand-blue);
+.fnode {
+  display: grid; place-items: center;
+  width: 3rem; height: 3rem;
   flex: none;
+  color: var(--brand-blue);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(43, 84, 162, 0.4);
+  border-radius: var(--radius-md);
+  box-shadow: 0 3px 10px rgba(26, 22, 80, 0.08);
 }
-.dz-node--lit { background: var(--cta-gradient); border-color: transparent; }
-.dz-link { width: 2.6rem; height: 2px; background: linear-gradient(90deg, var(--brand-blue), var(--brand-purple)); opacity: 0.5; }
+.fnode svg { width: 55%; height: 55%; }
+.fnode--lit {
+  color: #FFFFFF;
+  background: var(--cta-gradient);
+  border-color: transparent;
+}
+.farrow {
+  position: relative;
+  width: 1.5rem; height: 2px; flex: none;
+  background: linear-gradient(90deg, var(--brand-blue), var(--brand-purple));
+}
+.farrow::after {
+  content: "";
+  position: absolute; right: -1px; top: 50%;
+  width: 0.4rem; height: 0.4rem;
+  border-top: 2px solid var(--brand-purple);
+  border-right: 2px solid var(--brand-purple);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* CRM: a contacts table — avatar, name, status pill per row. */
+.mock--table {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem 0.85rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 22, 80, 0.12);
+  border-radius: 0.6rem;
+}
+.trow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.55rem; }
+.trow--head { padding-bottom: 0.4rem; border-bottom: 1px solid rgba(26, 22, 80, 0.1); }
+.trow--head b { height: 0.42rem; border-radius: 0.2rem; background: rgba(26, 22, 80, 0.28); }
+.trow--head b:nth-child(1) { width: 1.4rem; }
+.trow--head b:nth-child(2) { width: 3rem; }
+.trow--head b:nth-child(3) { width: 1.8rem; justify-self: end; }
+.ava { width: 1.3rem; height: 1.3rem; border-radius: 50%; background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple)); }
+.nm { height: 0.5rem; width: 100%; border-radius: 0.25rem; background: rgba(26, 22, 80, 0.16); }
+.nm--s { width: 70%; }
+.pill { width: 2.4rem; height: 0.85rem; border-radius: var(--radius-pill); }
+.pill--go { background: rgba(43, 130, 100, 0.9); }
+.pill--wait { background: rgba(214, 158, 46, 0.9); }
 
 /* ---- The shuffle (JS present + hero started only) ------------------------ */
 /* One 12s cycle; each card holds a slot ~a third of it, then glides on.
@@ -243,8 +300,9 @@
 }
 .stat__label {
   color: var(--text-body);
-  font-size: var(--step-0);
-  max-width: 22ch;
+  font-size: var(--step-1);
+  line-height: 1.4;
+  max-width: 20ch;
   margin-inline: auto;
 }
 .stats__src {
@@ -278,16 +336,16 @@
   padding-left: var(--space-lg);
   border-left: 1px solid rgba(26, 22, 80, 0.12);
 }
-.fact__icon { width: 2.4rem; height: 2.4rem; flex: none; }
+.fact__icon { width: 3rem; height: 3rem; flex: none; }
 .fact__body { display: grid; line-height: 1.35; min-width: 0; }
 .fact__body strong {
   font-family: var(--font-display);
   font-weight: var(--fw-semibold);
-  font-size: var(--step-1);
+  font-size: var(--step-2);
   letter-spacing: var(--tracking-tight);
   color: var(--text-ink);
 }
-.fact__body span { font-size: var(--step--1); color: var(--text-muted); }
+.fact__body span { font-size: var(--step-0); color: var(--text-muted); }
 
 @media (max-width: 61.99em) {
   .facts { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-xl); }
@@ -316,9 +374,9 @@
 .srail::before {
   content: "";
   position: absolute;
-  left: calc(1.625rem - 1px);
-  top: 1.25rem;
-  bottom: 1.25rem;
+  left: calc(1.875rem - 1px);
+  top: 1.5rem;
+  bottom: 1.5rem;
   width: 2px;
   border-radius: 2px;
   background: linear-gradient(180deg, var(--brand-blue), var(--brand-purple));
@@ -327,30 +385,30 @@
 .srail__item {
   position: relative;
   display: grid;
-  grid-template-columns: 3.25rem 1fr;
-  column-gap: var(--space-md);
+  grid-template-columns: 3.75rem 1fr;
+  column-gap: var(--space-lg);
   align-items: center;
 }
 .srail__marker {
   display: grid;
   place-items: center;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 3.75rem;
+  height: 3.75rem;
   border-radius: 50%;
   background: var(--surface);
   border: 1px solid rgba(91, 63, 224, 0.22);
-  box-shadow: 0 4px 14px rgba(26, 22, 80, 0.12), 0 0 0 5px rgba(245, 244, 255, 0.9);
+  box-shadow: 0 4px 14px rgba(26, 22, 80, 0.12), 0 0 0 6px rgba(245, 244, 255, 0.9);
   z-index: 1;
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   letter-spacing: var(--tracking-tight);
   background-color: var(--surface);
   color: var(--brand-purple);
 }
 .srail__text { min-width: 0; }
-.srail__text h3 { font-size: var(--step-1); margin-bottom: 0.15rem; }
-.srail__text p { font-size: var(--step--1); color: var(--text-muted); }
+.srail__text h3 { font-size: var(--step-2); margin-bottom: 0.25rem; }
+.srail__text p { font-size: var(--step-0); color: var(--text-muted); }
 
 @media (max-width: 47.99em) {
   .syllabus { grid-template-columns: 1fr; gap: var(--space-xl); }
